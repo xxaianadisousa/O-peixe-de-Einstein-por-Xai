@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Einstein por Xai</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🧠 Einstein por Xai</h1>
+  <p>Descubra quem tem peixes — e por quê!</p>
+  <p id="cronometro">⏱️ Tempo: 5:00</p>
+
+  <div id="tabuleiro">
+    <div class="casa" data-pos="1"></div>
+    <div class="casa" data-pos="2"></div>
+    <div class="casa" data-pos="3"></div>
+    <div class="casa" data-pos="4"></div>
+    <div class="casa" data-pos="5"></div>
+  </div>
+
+  <h2>🧩 Peças</h2>
+  <div id="pecas">
+    <div class="peca" draggable="true">Britânico</div>
+    <div class="peca" draggable="true">Norueguês</div>
+    <div class="peca" draggable="true">Alemão</div>
+    <div class="peca" draggable="true">Sueco</div>
+    <div class="peca" draggable="true">Dinamarquês</div>
+    <div class="peca" draggable="true">Água</div>
+    <div class="peca" draggable="true">Café</div>
+    <div class="peca" draggable="true">Chá</div>
+    <div class="peca" draggable="true">Leite</div>
+    <div class="peca" draggable="true">Cerveja</div>
+    <div class="peca" draggable="true">Gato</div>
+    <div class="peca" draggable="true">Peixes</div>
+    <div class="peca" draggable="true">Cachorro</div>
+    <div class="peca" draggable="true">Cavalo</div>
+    <div class="peca" draggable="true">Pássaros</div>
+    <div class="peca" draggable="true">Dunhill</div>
+    <div class="peca" draggable="true">Blends</div>
+    <div class="peca" draggable="true">Prince</div>
+    <div class="peca" draggable="true">Pall Mall</div>
+    <div class="peca" draggable="true">Blue Master</div>
+    <div class="peca" draggable="true">Amarela</div>
+    <div class="peca" draggable="true">Verde</div>
+    <div class="peca" draggable="true">Branca</div>
+    <div class="peca" draggable="true">Vermelha</div>
+    <div class="peca" draggable="true">Azul</div>
+  </div>
+
+  <button onclick="verificar()">✅ Verificar</button>
+  <p id="mensagem"></p>
+
+  <div id="conquistasPainel">
+    <h3>Conquistas desbloqueadas:</h3>
+    <ul id="listaConquistas"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

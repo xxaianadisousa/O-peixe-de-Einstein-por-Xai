@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  text-align: center;
+  padding: 20px;
+}
+
+#tabuleiro {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.casa {
+  width: 120px;
+  height: 300px;
+  border: 2px dashed #aaa;
+  margin: 5px;
+  background-color: #fff;
+  padding: 5px;
+  overflow-y: auto;
+}
+
+#pecas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+.peca {
+  width: 100px;
+  margin: 5px;
+  padding: 10px;
+  background: #dfe6e9;
+  border-radius: 5px;
+  cursor: grab;
+  box-shadow: 1px 1px 3px #aaa;
+  user-select: none;
+}
+
+#cronometro {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+#mensagem {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+#conquistasPainel {
+  margin-top: 20px;
+}
