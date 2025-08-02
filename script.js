@@ -1,9 +1,42 @@
+const opcoes = {
+  cor: ["vermelho", "verde", "branco", "azul", "amarelo"],
+  nacionalidade: ["noruegues", "ingles", "dinamarques", "alemao", "sueco"],
+  bebida: ["agua", "cafe", "leite", "cerveja", "cha"],
+  cigarro: ["pallmall", "dunhill", "bluemaster", "prince", "blends"],
+  animal: ["gato", "cachorro", "pássaro", "cavalo", "peixe"]
+};
+
+const solucao = [
+  { cor: "amarelo", nacionalidade: "noruegues", bebida: "agua", cigarro: "dunhill", animal: "gato" },
+  { cor: "azul", nacionalidade: "dinamarques", bebida: "cha", cigarro: "blends", animal: "cavalo" },
+  { cor: "vermelho", nacionalidade: "ingles", bebida: "leite", cigarro: "pallmall", animal: "pássaro" },
+  { cor: "verde", nacionalidade: "alemao", bebida: "cafe", cigarro: "prince", animal: "peixe" },
+  { cor: "branco", nacionalidade: "sueco", bebida: "cerveja", cigarro: "bluemaster", animal: "cachorro" }
+];
+
+const container = document.getElementById("casas");
+
+// Cria visualmente as casas
+for (let i = 1; i <= 5; i++) {
+  const div = document.createElement("div");
+  div.className = "casa";
+  div.innerHTML = `<h3>Casa ${i}</h3>` +
+    Object.keys(opcoes).map(tipo =>
+      `<select name="${tipo}" data-casa="${i}">
+        <option value="">-- ${tipo} --</option>
+        ${opcoes[tipo].map(opt => `<option value="${opt}">${opt[0].toUpperCase() + opt.slice(1)}</option>`).join("")}
+      </select>`
+    ).join("");
+  container.appendChild(div);
+}
+
+// Verifica a solução com tolerância a maiúsculas
 function verificarSolucao() {
   let acertos = 0;
 
   for (let i = 0; i < 5; i++) {
-    let casaCorreta = solucao[i];
-    let casaSelecionada = {};
+    const casaCorreta = solucao[i];
+    const casaSelecionada = {};
 
     Object.keys(opcoes).forEach(tipo => {
       const select = document.querySelector(`select[name="${tipo}"][data-casa="${i + 1}"]`);
@@ -11,8 +44,8 @@ function verificarSolucao() {
 
       select.style.backgroundColor = "white";
 
-      const valorUsuario = select.value.toLowerCase().trim();
-      const valorCorreto = casaCorreta[tipo].toLowerCase().trim();
+      const valorUsuario = select.value?.toLowerCase().trim();
+      const valorCorreto = casaCorreta[tipo]?.toLowerCase().trim();
 
       if (valorUsuario === valorCorreto) {
         select.style.backgroundColor = "#cceeff";
@@ -21,7 +54,7 @@ function verificarSolucao() {
       }
     });
 
-    let casaAcertos = Object.keys(opcoes).filter(tipo => {
+    const casaAcertos = Object.keys(opcoes).filter(tipo => {
       const valorUsuario = casaSelecionada[tipo]?.toLowerCase().trim();
       const valorCorreto = casaCorreta[tipo]?.toLowerCase().trim();
       return valorUsuario === valorCorreto;
@@ -30,7 +63,7 @@ function verificarSolucao() {
     if (casaAcertos === 5) acertos += 1;
   }
 
-  let pontos = acertos * 20;
+  const pontos = acertos * 20;
   let qi = 85;
   let nivel = "Abaixo da média";
 
@@ -42,35 +75,57 @@ function verificarSolucao() {
 
   document.getElementById("resultado").innerText =
     `✅ Casas corretas: ${acertos}/5\n🎯 Pontuação: ${pontos}\n🧠 QI estimado: ${qi} (${nivel})`;
-} {
-  const respostasUsuario = []; // Aqui você coleta os dados preenchidos
-
-  document.querySelectorAll('.casa').forEach(casa => {
-    const dados = {};
-    casa.querySelectorAll('select').forEach(select => {
-      const tipo = select.className; // Supondo que cada <select> tem uma class indicando o tipo (ex: "cor", "nacionalidade")
-      dados[tipo] = select.value;
-    });
-    respostasUsuario.push(dados);
-  });
-
-  for (let i = 0; i < 5; i++) {
-    const casaUsuario = respostasUsuario[i];
-    const casaCorreta = solucao[i]; // Certifique-se que sua variável `solucao` está definida acima no script
-
-    for (let tipo in casaCorreta) {
-      const valorUsuario = casaUsuario[tipo]?.toLowerCase().trim();
-      const valorCorreto = casaCorreta[tipo]?.toLowerCase().trim();
-
-if (valorUsuario.toLowerCase().trim() !== valorCorreto.toLowerCase().trim()) {
-  marcarErro(i, tipo);
-  return false;
-      }
-    }
-  }
-
-  alert("✅ Parabéns! Você solucionou corretamente o enigma de Einstein!");
-  return true;
 }
 
+// Realça dica clicada
+function destacarDica(el) {
+  el.style.backgroundColor = "#d0f0ff";
+}
 
+// Reinicia todos os menus
+function reiniciarJogo() {
+  document.querySelectorAll('.casa select').forEach(select => {
+    select.selectedIndex = 0;
+  });
+  atualizarMenus();
+  document.getElementById("resultado").innerText = "";
+}
+
+// Mostra dica aleatória
+function mostrarDicaAleatoria() {
+  const dicas = document.querySelectorAll('.dicas p');
+  const aleatoria = dicas[Math.floor(Math.random() * dicas.length)];
+  alert("💡 Dica aleatória:\n\n" + aleatoria.textContent);
+}
+
+// Evita repetições nos menus
+function atualizarMenus() {
+  const selects = document.querySelectorAll('select');
+  const valoresSelecionados = new Set();
+
+  selects.forEach(select => {
+    if (select.value) {
+      valoresSelecionados.add(select.value);
+    }
+  });
+
+  selects.forEach(select => {
+    Array.from(select.options).forEach(option => {
+      option.disabled = false;
+
+      if (
+        valoresSelecionados.has(option.value) &&
+        select.value !== option.value
+      ) {
+        option.disabled = true;
+      }
+    });
+  });
+}
+
+document.querySelectorAll('select').forEach(select => {
+  select.addEventListener('change', atualizarMenus);
+});
+
+// Inicializa o jogo
+atualizarMenus();
