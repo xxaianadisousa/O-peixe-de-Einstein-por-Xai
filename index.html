@@ -1,69 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>Jogo das Casas Misteriosas</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>O Peixe de Einstein</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Desvende Onde Está o Peixe! 🐟</h1>
-  <p class="instrucao">Escolha uma cor, um animal e um objeto por casa. Cada opção só pode ser usada uma vez!</p>
-
-  <div id="game">
-    <!-- Casa 1 -->
-    <div class="casa">
+  <h1>O Peixe de Einstein 🐟</h1>
+  <div id="casas-container">
+    <!-- 5 casas com 5 atributos cada -->
+    <div class="casa" id="casa1">
       <h2>Casa 1</h2>
-      <label>Cor:</label>
-      <select><option value="">—</option><option>Vermelha</option><option>Azul</option><option>Verde</option><option>Amarela</option><option>Branca</option></select>
-      <label>Animal:</label>
-      <select><option value="">—</option><option>Peixe</option><option>Gato</option><option>Cachorro</option><option>Pássaro</option><option>Porquinho-da-índia</option></select>
-      <label>Objeto:</label>
-      <select><option value="">—</option><option>Livro</option><option>Relógio</option><option>Caneca</option><option>Quadro</option><option>Chave</option></select>
+      <select class="cor"><option>Cor</option><option>Vermelha</option><option>Verde</option>...</select>
+      <select class="nacionalidade"><option>Nacionalidade</option><option>Britânico</option>...</select>
+      <select class="bebida"><option>Bebida</option><option>Chá</option>...</select>
+      <select class="cigarro"><option>Cigarro</option><option>PalMal</option>...</select>
+      <select class="animal"><option>Animal</option><option>Cachorro</option>...</select>
     </div>
+    <!-- Repetir div para casas 2 a 5 -->
+    <!-- Você pode duplicar a estrutura acima e mudar os IDs para casa2, casa3, etc. -->
+  </div>
 
-    <!-- Casa 2 -->
-    <div class="casa">
-      <h2>Casa 2</h2>
-      <label>Cor:</label>
-      <select><option value="">—</option><option>Vermelha</option><option>Azul</option><option>Verde</option><option>Amarela</option><option>Branca</option></select>
-      <label>Animal:</label>
-      <select><option value="">—</option><option>Peixe</option><option>Gato</option><option>Cachorro</option><option>Pássaro</option><option>Porquinho-da-índia</option></select>
-      <label>Objeto:</label>
-      <select><option value="">—</option><option>Livro</option><option>Relógio</option><option>Caneca</option><option>Quadro</option><option>Chave</option></select>
-    </div>
-
-    <!-- Casa 3 -->
-    <div class="casa">
-      <h2>Casa 3</h2>
-      <label>Cor:</label>
-      <select><option value="">—</option><option>Vermelha</option><option>Azul</option><option>Verde</option><option>Amarela</option><option>Branca</option></select>
-      <label>Animal:</label>
-      <select><option value="">—</option><option>Peixe</option><option>Gato</option><option>Cachorro</option><option>Pássaro</option><option>Porquinho-da-índia</option></select>
-      <label>Objeto:</label>
-      <select><option value="">—</option><option>Livro</option><option>Relógio</option><option>Caneca</option><option>Quadro</option><option>Chave</option></select>
-    </div>
-
-    <!-- Casa 4 -->
-    <div class="casa">
-      <h2>Casa 4</h2>
-      <label>Cor:</label>
-      <select><option value="">—</option><option>Vermelha</option><option>Azul</option><option>Verde</option><option>Amarela</option><option>Branca</option></select>
-      <label>Animal:</label>
-      <select><option value="">—</option><option>Peixe</option><option>Gato</option><option>Cachorro</option><option>Pássaro</option><option>Porquinho-da-índia</option></select>
-      <label>Objeto:</label>
-      <select><option value="">—</option><option>Livro</option><option>Relógio</option><option>Caneca</option><option>Quadro</option><option>Chave</option></select>
-    </div>
-
-    <!-- Casa 5 -->
-    <div class="casa">
-      <h2>Casa 5</h2>
-      <label>Cor:</label>
-      <select><option value="">—</option><option>Vermelha</option><option>Azul</option><option>Verde</option><option>Amarela</option><option>Branca</option></select>
-      <label>Animal:</label>
-      <select><option value="">—</option><option>Peixe</option><option>Gato</option><option>Cachorro</option><option>Pássaro</option><option>Porquinho-da-índia</option></select>
-      <label>Objeto:</label>
-      <select><option value="">—</option><option>Livro</option><option>Relógio</option><option>Caneca</option><option>Quadro</option><option>Chave</option></select>
-    </div>
+  <div id="dicas">
+    <h2>Dicas</h2>
+    <ul>
+      <li>O norueguês vive na primeira casa.</li>
+      <li>O homem da casa verde bebe café.</li>
+      <li>O britânico vive na casa vermelha.</li>
+      <!-- Inclua todas as dicas aqui -->
+    </ul>
   </div>
 
   <script src="script.js"></script>
