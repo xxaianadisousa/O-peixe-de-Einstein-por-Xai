@@ -80,3 +80,25 @@ button {
     align-items: center;
   }
 }
+.quadro-desafio {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+.casa {
+  border: 2px solid #ccc;
+  padding: 10px;
+  width: 140px;
+  background: #f9f9f9;
+}
+.casa p {
+  font-weight: bold;
+  text-align: center;
+}
+.casa input {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 6px;
+  box-sizing: border-box;
+}
