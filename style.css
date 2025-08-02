@@ -81,5 +81,32 @@ button:hover {
   .container {
     grid-template-columns: 1fr;
   }
-}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .casas {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .casa {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .dicas {
+    max-width: 100%;
+    border-left: none;
+    border-top: 2px solid #ccc;
+  }
+
+  button, #resultado {
+    text-align: center;
+  }
+
+
+
 
