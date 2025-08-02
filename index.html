@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <title>O Peixe de Einstein</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-image: url('img/Einstein e o Peixe.png.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
     h1 { margin-bottom: 10px; }
     .container { display: flex; gap: 40px; align-items: flex-start; }
     .casas { display: flex; gap: 20px; flex-wrap: nowrap; }
@@ -135,13 +142,12 @@
           const select = document.querySelector(`select[name="${tipo}"][data-casa="${i + 1}"]`);
           casaSelecionada[tipo] = select.value;
 
-          // Resetando cor antes de verificar
           select.style.backgroundColor = "white";
 
           if (select.value === casaCorreta[tipo]) {
-            select.style.backgroundColor = "#cceeff"; // azul claro
+            select.style.backgroundColor = "#cceeff";
           } else {
-            select.style.backgroundColor = "#ffccd5"; // flamingo claro
+            select.style.backgroundColor = "#ffccd5";
           }
         });
 
@@ -165,4 +171,3 @@
   </script>
 </body>
 </html>
-
