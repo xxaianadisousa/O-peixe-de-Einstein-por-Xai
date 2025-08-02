@@ -1,99 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>O Peixe de Einstein</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: url('https://raw.githubusercontent.com/xxaianadisousa/O-peixe-de-Einstein-por-Xai/main/imagens/fundo.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      margin: 20px;
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { margin-bottom: 10px; }
+    .container { display: flex; gap: 40px; align-items: flex-start; }
+    .casas { display: flex; gap: 20px; flex-wrap: nowrap; }
+    .casa {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 180px;
+      flex-shrink: 0;
+      background: #fdfdfd;
     }
-
-    .botoes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
+    .casa h3 { margin-top: 0; font-size: 16px; }
+    select {
+      margin: 5px 0;
+      width: 100%;
+      background-color: white;
+      transition: background-color 0.3s ease;
     }
-
-    .botoes button {
+    .dicas {
+      flex: 1;
+      background: #f9f9f9;
       padding: 10px 20px;
+      border-left: 2px solid #ccc;
+      max-width: 300px;
+    }
+    .dicas h2 { margin-top: 0; }
+    ol { padding-left: 20px; }
+    #resultado { margin-top: 20px; font-weight: bold; white-space: pre-line; }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
       font-size: 16px;
       cursor: pointer;
-      background-color: #0066cc;
-      border: none;
-      border-radius: 5px;
-      color: white;
-    }
-
-    .casa {
-      margin-bottom: 15px;
-      padding: 10px;
-      background-color: rgba(0,0,0,0.6);
-      border-radius: 10px;
-    }
-
-    select {
-      width: 100%;
-      padding: 8px;
-      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <h1>🧠 O Peixe de Einstein</h1>
+  <h1>O Peixe de Einstein por Xai 🧠🐟</h1>
 
-  <div class="botoes">
-    <button onclick="verificarSolucao()">Verificar QI</button>
-    <button onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
-    <button onclick="mostrarDicaAleatoria()">💡 Dica Aleatória</button>
+  <div class="container">
+    <div class="casas" id="casas"></div>
+
+    <div class="dicas">
+      <h2>Dicas do Enigma</h2>
+      <ol>
+        <li>O britânico vive na casa vermelha.</li>
+        <li>O sueco tem um cachorro.</li>
+        <li>O dinamarquês bebe chá.</li>
+        <li>A casa verde está à esquerda da casa branca.</li>
+        <li>O dono da casa verde bebe café.</li>
+        <li>A pessoa que fuma Pall Mall cria pássaros.</li>
+        <li>O dono da casa amarela fuma Dunhill.</li>
+        <li>O homem que vive na casa do meio bebe leite.</li>
+        <li>O norueguês vive na primeira casa.</li>
+        <li>O homem que fuma Blends vive ao lado do dono dos gatos.</li>
+        <li>O dono do cavalo vive ao lado do homem que fuma Dunhill.</li>
+        <li>O homem que fuma Bluemaster bebe cerveja.</li>
+        <li>O alemão fuma Prince.</li>
+        <li>O norueguês vive ao lado da casa azul.</li>
+        <li>O homem que fuma Blends tem um vizinho que bebe água.</li>
+      </ol>
+    </div>
   </div>
 
-  <div id="casas"></div>
+  <button onclick="verificarSolucao()">Verificar QI</button>
+  <div id="resultado"></div>
 
   <script>
-    const opcoes = ["Vermelha", "Verde", "Branca", "Amarela", "Azul", "Inglês", "Sueco", "Dinamarquês", "Norueguês", "Alemão", "Cachorro", "Pássaro", "Gato", "Cavalo", "Peixe", "Pall Mall", "Dunhill", "Blend", "BlueMaster", "Prince", "Água", "Chá", "Leite", "Cerveja", "Café"];
+    const opcoes = {
+      cor: ["vermelho", "verde", "branco", "azul", "amarelo"],
+      nacionalidade: ["noruegues", "ingles", "dinamarques", "alemao", "sueco"],
+      bebida: ["agua", "cafe", "leite", "cerveja", "cha"],
+      cigarro: ["pallmall", "dunhill", "bluemaster", "prince", "blend"],
+      animal: ["gato", "cachorro", "pássaro", "cavalo", "peixe"]
+    };
 
-    function criarCasas() {
-      const container = document.getElementById("casas");
-      container.innerHTML = '';
-      for (let i = 1; i <= 5; i++) {
-        const casa = document.createElement("div");
-        casa.className = "casa";
-        casa.innerHTML = `<h2>Casa ${i}</h2>`;
-        opcoes.forEach(opcao => {
-          const select = document.createElement("select");
-          select.innerHTML = `<option value="">${opcao}</option>` + 
-                             opcoes.map(o => `<option value="${o}">${o}</option>`).join('');
-          casa.appendChild(select);
-        });
-        container.appendChild(casa);
-      }
+    const solucao = [
+      { cor: "amarelo", nacionalidade: "noruegues", bebida: "agua", cigarro: "dunhill", animal: "gato" },
+      { cor: "azul", nacionalidade: "dinamarques", bebida: "cha", cigarro: "blends", animal: "cavalo" },
+      { cor: "vermelho", nacionalidade: "ingles", bebida: "leite", cigarro: "pallmall", animal: "pássaro" },
+      { cor: "verde", nacionalidade: "alemao", bebida: "cafe", cigarro: "prince", animal: "peixe" },
+      { cor: "branco", nacionalidade: "sueco", bebida: "cerveja", cigarro: "bluemaster", animal: "cachorro" }
+    ];
+
+    const container = document.getElementById("casas");
+    for (let i = 1; i <= 5; i++) {
+      const div = document.createElement("div");
+      div.className = "casa";
+      div.innerHTML = `<h3>Casa ${i}</h3>` +
+        Object.keys(opcoes).map(tipo =>
+          `<select name="${tipo}" data-casa="${i}">
+            <option value="">-- ${tipo} --</option>
+            ${opcoes[tipo].map(opt => `<option value="${opt}">${opt[0].toUpperCase() + opt.slice(1)}</option>`).join("")}
+          </select>`
+        ).join("");
+      container.appendChild(div);
     }
+
+    function atualizarOpcoes(tipo) {
+      const selects = Array.from(document.querySelectorAll(`select[name="${tipo}"]`));
+      const valoresSelecionados = selects.map(s => s.value);
+
+      selects.forEach((selectAtual, indexAtual) => {
+        const valoresAnteriores = valoresSelecionados.slice(0, indexAtual).filter(v => v !== "");
+        Array.from(selectAtual.options).forEach(option => {
+          if (valoresAnteriores.includes(option.value) && option.value !== selectAtual.value) {
+            option.disabled = true;
+          } else {
+            option.disabled = false;
+          }
+        });
+      });
+    }
+
+    ["cor", "nacionalidade", "bebida", "cigarro", "animal"].forEach(tipo => {
+      document.querySelectorAll(`select[name="${tipo}"]`).forEach(select => {
+        select.addEventListener("change", () => atualizarOpcoes(tipo));
+      });
+    });
 
     function verificarSolucao() {
-      alert("Função de verificação em desenvolvimento!");
-    }
+      let acertos = 0;
 
-    function reiniciarJogo() {
-      criarCasas();
-    }
+      for (let i = 0; i < 5; i++) {
+        let casaCorreta = solucao[i];
+        let casaSelecionada = {};
 
-    function mostrarDicaAleatoria() {
-      const dicas = [
-        "O norueguês vive na primeira casa.",
-        "A casa verde está à esquerda da branca.",
-        "Quem fuma Blend tem um vizinho que bebe água.",
-        "Quem cria peixes mora em alguma casa... será que é a do alemão?",
-      ];
-      alert(dicas[Math.floor(Math.random() * dicas.length)]);
-    }
+        Object.keys(opcoes).forEach(tipo => {
+          const select = document.querySelector(`select[name="${tipo}"][data-casa="${i + 1}"]`);
+          casaSelecionada[tipo] = select.value;
 
-    // Inicializa o jogo
-    criarCasas();
+          // Resetando cor antes de verificar
+          select.style.backgroundColor = "white";
+
+          if (select.value === casaCorreta[tipo]) {
+            select.style.backgroundColor = "#cceeff"; // azul claro
+          } else {
+            select.style.backgroundColor = "#ffccd5"; // flamingo claro
+          }
+        });
+
+        let casaAcertos = Object.keys(opcoes).filter(tipo => casaSelecionada[tipo] === casaCorreta[tipo]).length;
+        if (casaAcertos === 5) acertos += 1;
+      }
+
+      let pontos = acertos * 20;
+      let qi = 85;
+      let nivel = "Abaixo da média";
+
+      if (pontos >= 100) { qi = 135; nivel = "Superdotado"; }
+      else if (pontos >= 81) { qi = 125; nivel = "Muito acima da média"; }
+      else if (pontos >= 61) { qi = 115; nivel = "Acima da média"; }
+      else if (pontos >= 41) { qi = 105; nivel = "Média"; }
+      else if (pontos >= 21) { qi = 95; nivel = "Média baixa"; }
+
+      document.getElementById("resultado").innerText =
+        `✅ Casas corretas: ${acertos}/5\n🎯 Pontuação: ${pontos}\n🧠 QI estimado: ${qi} (${nivel})`;
+    }
   </script>
 </body>
 </html>
+
