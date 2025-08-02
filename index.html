@@ -1,150 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Einstein por Xai</title>
+  <title>O Peixe de Einstein</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Einstein por Xai 🧠</h1>
+    <h1 id="titulo">O Peixe de Einstein</h1>
+    <button onclick="traduzir()">🇬🇧 Versão em inglês</button>
   </header>
+
+  <section class="introducao">
+    <p>Dizem que apenas 2% das pessoas conseguem resolver esse desafio de lógica. Sua missão: descobrir quem tem o peixe 🐠.</p>
+  </section>
+
+  <div id="cronometro">⏱️ 300s restantes</div>
 
   <section id="pistas">
     <h2>Pistas</h2>
-    <ol>
-      <li>O inglês vive na casa vermelha.</li>
-      <li>O sueco tem cachorros.</li>
+    <ul>
+      <li>O britânico vive na casa vermelha.</li>
+      <li>O sueco tem cachorros de estimação.</li>
       <li>O dinamarquês bebe chá.</li>
-      <li>A casa verde fica do lado esquerdo da branca.</li>
-      <li>O homem da casa verde bebe café.</li>
-      <li>Pall Mall → pássaros.</li>
-      <li>Casa do meio → leite.</li>
-      <li>Casa amarela → Dunhill.</li>
-      <li>Norueguês → primeira casa.</li>
-      <li>Blends → vizinho do homem com gatos.</li>
-      <li>Cavalos → vizinho do fumante de Dunhill.</li>
-      <li>BlueMaster → cerveja.</li>
-      <li>Alemão → Prince.</li>
-      <li>Norueguês → ao lado da casa azul.</li>
-      <li>Blends → vizinho do que bebe água.</li>
-    </ol>
+      <!-- Continue com todas as 15 pistas -->
+    </ul>
   </section>
 
   <section id="tabuleiro">
-    <h2>Casas</h2>
-    <div class="grid">
-      <!-- 5 colunas de casas -->
-      <div class="casa">Casa 1</div>
-      <div class="casa">Casa 2</div>
-      <div class="casa">Casa 3</div>
-      <div class="casa">Casa 4</div>
-      <div class="casa">Casa 5</div>
+    <div class="casas-container">
+      <div class="casa" id="casa1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="casa" id="casa2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="casa" id="casa3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="casa" id="casa4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="casa" id="casa5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
-    <div class="atributos">
-      <!-- Linhas: Cor / Nacionalidade / Bebida / Cigarro / Animal -->
+
+    <h2>Peças</h2>
+    <div class="pecas-container">
+      <div class="peca" draggable="true" ondragstart="drag(event)" id="alemao">
+        <img src="img/alemao.png" alt="Alemão" />
+      </div>
+      <div class="peca" draggable="true" ondragstart="drag(event)" id="peixe">
+        <img src="img/peixe.png" alt="Peixe" />
+      </div>
+      <!-- Adicione as outras 23 peças aqui com seus respectivos nomes e imagens -->
     </div>
   </section>
 
-  <section id="pecas">
-    <h2>Peças</h2>
-    <div class="grupo">
-      <h3>Nacionalidades</h3>
-      <div class="pecas">
-        <img src="img/ingles.png" alt="Inglês" />
-        <img src="img/sueco.png" alt="Sueco" />
-        <img src="img/dinamarques.png" alt="Dinamarquês" />
-        <img src="img/noruegues.png" alt="Norueguês" />
-        <img src="img/alemao.png" alt="Alemão" />
-      </div>
-    </div>
-    <!-- Repita isso para bebidas, cigarros, animais e cores -->
-  </section>
+  <button onclick="verificarSolucao()">✅ Verificar solução</button>
 
   <script src="script.js"></script>
 </body>
 </html>
-<!-- Nacionalidades -->
-<h2>Nacionalidades</h2>
-<img src="img/ingles.png" alt="Inglês">
-<img src="img/sueco.png" alt="Sueco">
-<img src="img/dinamarques.png" alt="Dinamarquês">
-<img src="img/noruegues.png" alt="Norueguês">
-<img src="img/alemao.png" alt="Alemão">
-
-<!-- Bebidas -->
-<h2>Bebidas</h2>
-<img src="img/cha.png" alt="Chá">
-<img src="img/cafe.png" alt="Café">
-<img src="img/leite.png" alt="Leite">
-<img src="img/cerveja.png" alt="Cerveja">
-<img src="img/agua.png" alt="Água">
-
-<!-- Cigarros -->
-<h2>Cigarros</h2>
-<img src="img/pallmall.png" alt="Pall Mall">
-<img src="img/dunhill.png" alt="Dunhill">
-<img src="img/blends.png" alt="Blends">
-<img src="img/bluemaster.png" alt="BlueMaster">
-<img src="img/prince.png" alt="Prince">
-
-<!-- Animais de Estimação -->
-<h2>Animais de Estimação</h2>
-<img src="img/gato.png" alt="Gato">
-<img src="img/cachorro.png" alt="Cachorro">
-<img src="img/cavalo.png" alt="Cavalo">
-<img src="img/passaro.png" alt="Pássaro">
-<img src="img/peixe.png" alt="Peixe">
-
-<!-- Cores das Casas -->
-<h2>Cores das Casas</h2>
-<img src="img/vermelha.png" alt="Vermelha">
-<img src="img/verde.png" alt="Verde">
-<img src="img/branca.png" alt="Branca">
-<img src="img/amarela.png" alt="Amarela">
-<img src="img/azul.png" alt="Azul">
-<h2>Nacionalidades</h2>
-<div class="category">
-  <img src="img/ingles.png" alt="Inglês">
-  <img src="img/sueco.png" alt="Sueco">
-  <img src="img/dinamarques.png" alt="Dinamarquês">
-  <img src="img/noruegues.png" alt="Norueguês">
-  <img src="img/alemao.png" alt="Alemão">
-</div>
-
-<h2>Bebidas</h2>
-<div class="category">
-  <img src="img/cha.png" alt="Chá">
-  <img src="img/cafe.png" alt="Café">
-  <img src="img/leite.png" alt="Leite">
-  <img src="img/cerveja.png" alt="Cerveja">
-  <img src="img/agua.png" alt="Água">
-</div>
-
-<h2>Cigarros</h2>
-<div class="category">
-  <img src="img/pallmall.png" alt="Pall Mall">
-  <img src="img/dunhill.png" alt="Dunhill">
-  <img src="img/blends.png" alt="Blends">
-  <img src="img/bluemaster.png" alt="BlueMaster">
-  <img src="img/prince.png" alt="Prince">
-</div>
-
-<h2>Animais de Estimação</h2>
-<div class="category">
-  <img src="img/gato.png" alt="Gato">
-  <img src="img/cachorro.png" alt="Cachorro">
-  <img src="img/cavalo.png" alt="Cavalo">
-  <img src="img/passaro.png" alt="Pássaro">
-  <img src="img/peixe.png" alt="Peixe">
-</div>
-
-<h2>Cores das Casas</h2>
-<div class="category">
-  <img src="img/vermelha.png" alt="Vermelha">
-  <img src="img/verde.png" alt="Verde">
-  <img src="img/branca.png" alt="Branca">
-  <img src="img/amarela.png" alt="Amarela">
-  <img src="img/azul.png" alt="Azul">
-</div>
