@@ -1,27 +1,84 @@
 body {
-  font-family: sans-serif;
-  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
   padding: 20px;
 }
-#casas-container {
-  display: flex;
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
-  justify-content: center;
+  margin-bottom: 40px;
 }
+
 .casa {
-  background-color: white;
+  background: #f0f0f0;
+  border: 2px solid #ccc;
   padding: 10px;
-  border: 1px solid #ccc;
-  width: 180px;
+  border-radius: 8px;
 }
-select {
+
+.casa h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.casa label {
   display: block;
-  margin: 5px 0;
-  width: 100%;
+  margin-bottom: 10px;
 }
-#dicas {
-  margin-top: 30px;
-  background: #fff;
-  padding: 15px;
-  border: 1px solid #ccc;
+
+.casa select {
+  width: 100%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+}
+
+.painel {
+  margin-bottom: 30px;
+}
+
+.dicas p {
+  background: #eef;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dicas p:hover {
+  background: #cce;
+}
+
+.botoes {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 6px;
+  background: #0077cc;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fa3;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 }
