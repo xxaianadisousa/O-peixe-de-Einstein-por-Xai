@@ -1,27 +1,35 @@
 body {
   font-family: Arial, sans-serif;
-  background: #fff;
+  background: #ffffff;
   color: #333;
-  margin: 0;
   padding: 20px;
 }
 
 h1 {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.container {
+.jogo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.quadro-casas {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
-  margin-bottom: 40px;
+  flex: 1;
+  min-width: 300px;
 }
 
 .casa {
   background: #f0f0f0;
-  border: 2px solid #ccc;
   padding: 10px;
   border-radius: 8px;
+  border: 2px solid #ccc;
 }
 
 .casa h3 {
@@ -29,11 +37,32 @@ h1 {
 }
 
 .casa input {
+  display: block;
   width: 100%;
   margin: 6px 0;
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #aaa;
+}
+
+.lista-preenchimento {
+  flex: 1;
+  min-width: 250px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+}
+
+.lista-preenchimento label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.lista-preenchimento select {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
 }
 
 .painel {
@@ -54,6 +83,7 @@ h1 {
 
 .botoes {
   text-align: center;
+  margin-bottom: 30px;
 }
 
 button {
@@ -72,7 +102,12 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
+  .jogo {
+    flex-direction: column;
+  }
+
+  .quadro-casas,
+  .lista-preenchimento {
+    width: 100%;
   }
 }
