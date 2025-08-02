@@ -1,16 +1,15 @@
-// Exemplo simples para evitar duplicação nos menus
-document.querySelectorAll('select').forEach(select => {
-  select.addEventListener('change', () => {
-    const selectedValues = new Set();
-    document.querySelectorAll(`select.${select.className}`).forEach(s => {
-      if (s.value !== s.options[0].text) selectedValues.add(s.value);
-    });
-    document.querySelectorAll(`select.${select.className}`).forEach(s => {
-      Array.from(s.options).forEach(opt => {
-        if (opt.index !== 0) {
-          opt.disabled = selectedValues.has(opt.text);
-        }
-      });
-    });
+function destacarDica(el) {
+  el.style.backgroundColor = "#d0f0ff";
+}
+
+function reiniciarJogo() {
+  document.querySelectorAll('.casa select').forEach(select => {
+    select.selectedIndex = 0;
   });
-});
+}
+
+function mostrarDicaAleatoria() {
+  const dicas = document.querySelectorAll('.dicas p');
+  const aleatoria = dicas[Math.floor(Math.random() * dicas.length)];
+  alert("💡 Dica aleatória:\n\n" + aleatoria.textContent);
+}
