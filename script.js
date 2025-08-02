@@ -18,9 +18,9 @@ function verificarResposta() {
       const valorUsuario = casaUsuario[tipo]?.toLowerCase().trim();
       const valorCorreto = casaCorreta[tipo]?.toLowerCase().trim();
 
-      if (valorUsuario !== valorCorreto) {
-        marcarErro(i, tipo); // Mostra onde está o erro
-        return false;
+if (valorUsuario.toLowerCase().trim() !== valorCorreto.toLowerCase().trim()) {
+  marcarErro(i, tipo);
+  return false;
       }
     }
   }
@@ -28,3 +28,4 @@ function verificarResposta() {
   alert("✅ Parabéns! Você solucionou corretamente o enigma de Einstein!");
   return true;
 }
+
