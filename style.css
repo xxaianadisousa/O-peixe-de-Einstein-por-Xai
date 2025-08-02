@@ -2,18 +2,13 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #f0f0f5;
+  background-color: #f8f8f8;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0;
 }
 
 #cronometro {
@@ -27,22 +22,21 @@ h1 {
 }
 
 #pistas {
-  background-color: #fff;
+  background: #fff;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  margin-bottom: 2em;
 }
 
 .casas-container {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin: 2em 0;
 }
 
 .casa {
   width: 150px;
-  height: 220px;
+  min-height: 220px;
   background-color: #fff;
   border: 2px dashed #999;
   padding: 5px;
@@ -56,14 +50,21 @@ h1 {
 }
 
 .peca {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 40px;
+  background-color: #eeeeee;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
   cursor: grab;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  user-select: none;
 }
 
-.peca img {
-  width: 100%;
-  height: auto;
+.peca:active {
+  cursor: grabbing;
 }
 
 button {
