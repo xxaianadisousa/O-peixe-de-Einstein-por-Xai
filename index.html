@@ -16,7 +16,12 @@
       background: #fdfdfd;
     }
     .casa h3 { margin-top: 0; font-size: 16px; }
-    select { margin: 5px 0; width: 100%; }
+    select {
+      margin: 5px 0;
+      width: 100%;
+      background-color: white;
+      transition: background-color 0.3s ease;
+    }
     .dicas {
       flex: 1;
       background: #f9f9f9;
@@ -26,8 +31,13 @@
     }
     .dicas h2 { margin-top: 0; }
     ol { padding-left: 20px; }
-    #resultado { margin-top: 20px; font-weight: bold; }
-    button { margin-top: 20px; padding: 10px 15px; font-size: 16px; cursor: pointer; }
+    #resultado { margin-top: 20px; font-weight: bold; white-space: pre-line; }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -116,12 +126,23 @@
 
     function verificarSolucao() {
       let acertos = 0;
+
       for (let i = 0; i < 5; i++) {
         let casaCorreta = solucao[i];
         let casaSelecionada = {};
+
         Object.keys(opcoes).forEach(tipo => {
           const select = document.querySelector(`select[name="${tipo}"][data-casa="${i + 1}"]`);
           casaSelecionada[tipo] = select.value;
+
+          // Resetando cor antes de verificar
+          select.style.backgroundColor = "white";
+
+          if (select.value === casaCorreta[tipo]) {
+            select.style.backgroundColor = "#cceeff"; // azul claro
+          } else {
+            select.style.backgroundColor = "#ffccd5"; // flamingo claro
+          }
         });
 
         let casaAcertos = Object.keys(opcoes).filter(tipo => casaSelecionada[tipo] === casaCorreta[tipo]).length;
