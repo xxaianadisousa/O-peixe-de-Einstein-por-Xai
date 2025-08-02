@@ -1,73 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Enigma das Casas</title>
+  <meta charset="UTF-8" />
+  <title>O Peixe de Einstein</title>
   <style>
-    body { font-family: Arial; margin: 20px; }
+    body { font-family: Arial, sans-serif; margin: 20px; }
     .casa { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
     .casa h3 { margin-top: 0; }
-    select { margin: 5px; }
+    select { margin: 5px; width: 180px; }
   </style>
 </head>
 <body>
-  <h1>Enigma das Casas</h1>
+  <h1>O Peixe de Einstein 🧠🐟</h1>
 
-  <div class="casa">
-    <h3>Casa 1</h3>
-    <select name="cor">
-      <option value="">-- cor --</option>
-      <option value="vermelho">Vermelho</option>
-      <option value="verde">Verde</option>
-      <option value="branco">Branco</option>
-      <option value="azul">Azul</option>
-      <option value="amarelo">Amarelo</option>
-    </select>
-    <select name="nacionalidade">
-      <option value="">-- nacionalidade --</option>
-      <option value="noruegues">Norueguês</option>
-      <option value="ingles">Inglês</option>
-      <option value="dinamarques">Dinamarquês</option>
-      <option value="alemao">Alemão</option>
-      <option value="sueco">Sueco</option>
-    </select>
-    <select name="bebida">
-      <option value="">-- bebida --</option>
-      <option value="agua">Água</option>
-      <option value="cafe">Café</option>
-      <option value="leite">Leite</option>
-      <option value="cerveja">Cerveja</option>
-      <option value="cha">Chá</option>
-    </select>
-    <select name="cigarro">
-      <option value="">-- cigarro --</option>
-      <option value="pallmall">Pall Mall</option>
-      <option value="dunhill">Dunhill</option>
-      <option value="bluemaster">Blue Master</option>
-      <option value="prince">Prince</option>
-      <option value="blend">Blend</option>
-    </select>
-    <select name="animal">
-      <option value="">-- animal --</option>
-      <option value="gato">Gato</option>
-      <option value="cachorro">Cachorro</option>
-      <option value="pássaro">Pássaro</option>
-      <option value="cavalo">Cavalo</option>
-      <option value="peixe">Peixe</option>
-    </select>
-  </div>
-
-  <!-- Copie e cole a mesma estrutura acima para Casa 2, 3, 4, 5, apenas alterando o título para Casa X -->
-  <!-- Para facilitar, posso gerar todas as casas pra você também, se quiser! -->
+  <!-- Casas 1 a 5 -->
+  <div id="casas"></div>
 
   <script>
+    const opcoes = {
+      cor: ["vermelho", "verde", "branco", "azul", "amarelo"],
+      nacionalidade: ["noruegues", "ingles", "dinamarques", "alemao", "sueco"],
+      bebida: ["agua", "cafe", "leite", "cerveja", "cha"],
+      cigarro: ["pallmall", "dunhill", "bluemaster", "prince", "blend"],
+      animal: ["gato", "cachorro", "pássaro", "cavalo", "peixe"]
+    };
+
+    const container = document.getElementById("casas");
+    for (let i = 1; i <= 5; i++) {
+      const div = document.createElement("div");
+      div.className = "casa";
+      div.innerHTML = `<h3>Casa ${i}</h3>` +
+        Object.keys(opcoes).map(tipo =>
+          `<select name="${tipo}" data-casa="${i}">
+            <option value="">-- ${tipo} --</option>
+            ${opcoes[tipo].map(opt => `<option value="${opt}">${opt[0].toUpperCase() + opt.slice(1)}</option>`).join("")}
+          </select>`
+        ).join("");
+      container.appendChild(div);
+    }
+
     function atualizarOpcoes(tipo) {
       const selects = Array.from(document.querySelectorAll(`select[name="${tipo}"]`));
       const valoresSelecionados = selects.map(s => s.value);
 
       selects.forEach((selectAtual, indexAtual) => {
         const valoresAnteriores = valoresSelecionados.slice(0, indexAtual).filter(v => v !== "");
-
         Array.from(selectAtual.options).forEach(option => {
           if (valoresAnteriores.includes(option.value) && option.value !== selectAtual.value) {
             option.disabled = true;
@@ -79,8 +56,7 @@
     }
 
     ["cor", "nacionalidade", "bebida", "cigarro", "animal"].forEach(tipo => {
-      const selects = document.querySelectorAll(`select[name="${tipo}"]`);
-      selects.forEach(select => {
+      document.querySelectorAll(`select[name="${tipo}"]`).forEach(select => {
         select.addEventListener("change", () => atualizarOpcoes(tipo));
       });
     });
