@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>O Peixe de Einstein</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
@@ -30,56 +29,19 @@
       border-left: 2px solid #ccc;
       max-width: 300px;
     }
-    #resultado, #player-quote {
-      margin-top: 20px;
-      font-weight: bold;
-      white-space: pre-line;
-    }
+    .dicas h2 { margin-top: 0; }
+    ol { padding-left: 20px; }
+    #resultado { margin-top: 20px; font-weight: bold; white-space: pre-line; }
     button {
-      margin: 10px 10px 0 0;
+      margin-top: 20px;
       padding: 10px 15px;
       font-size: 16px;
       cursor: pointer;
     }
-    textarea, input {
-      margin: 5px 0;
-      width: 100%;
-      padding: 8px;
-      font-size: 14px;
-    }
-    ul { padding-left: 20px; }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        gap: 20px;
-        padding-bottom: 140px;
-      }
-      .casas {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .casa {
-        width: 100%;
-        max-width: 300px;
-      }
-      .dicas {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: #f9f9f9;
-        padding: 15px;
-        border-top: 2px solid #ccc;
-        z-index: 1000;
-        max-height: 200px;
-        overflow-y: auto;
-      }
-    }
   </style>
 </head>
 <body>
-  <h1>O Peixe de Einstein 🧠🐟</h1>
+  <h1>O Peixe de Einstein por Xai 🧠🐟</h1>
 
   <div class="container">
     <div class="casas" id="casas"></div>
@@ -106,32 +68,15 @@
     </div>
   </div>
 
-  <button onclick="verificarSolucao()">✅ Verificar QI</button>
-  <button onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
+  <button onclick="verificarSolucao()">Verificar QI</button>
   <div id="resultado"></div>
-
-  <h3>💬 Frases dos jogadores</h3>
-  <div id="player-quote">“Aqui aparecerá a frase do jogador...”</div>
-
-  <h3>📝 Deixe sua frase sobre o desafio!</h3>
-  <form id="comentario-form" onsubmit="salvarComentario(); return false;">
-    <textarea id="comentario" rows="3" placeholder="Escreva sua experiência..."></textarea><br>
-    <input type="text" id="nome" placeholder="Seu nome (opcional)">
-    <input type="text" id="cidade" placeholder="Cidade (opcional)">
-    <button type="submit">Enviar</button>
-  </form>
-
-  <div id="comentarios-recentes">
-    <h4>💬 Comentários recentes:</h4>
-    <ul id="lista-comentarios"></ul>
-  </div>
 
   <script>
     const opcoes = {
       cor: ["vermelho", "verde", "branco", "azul", "amarelo"],
       nacionalidade: ["noruegues", "ingles", "dinamarques", "alemao", "sueco"],
       bebida: ["agua", "cafe", "leite", "cerveja", "cha"],
-      cigarro: ["pallmall", "dunhill", "bluemaster", "prince", "blends"],
+      cigarro: ["pallmall", "dunhill", "bluemaster", "prince", "blend"],
       animal: ["gato", "cachorro", "pássaro", "cavalo", "peixe"]
     };
 
@@ -157,30 +102,67 @@
       container.appendChild(div);
     }
 
-    function verificarSolucao() {
-      let acertos = 0;
-      for (let i = 0; i < 5; i++) {
-        let casaCorreta = solucao[i];
-        Object.keys(opcoes).forEach(tipo => {
-          const select = document.querySelector(`select[name="${tipo}"][data-casa="${i + 1}"]`);
-          select.style.backgroundColor = "white";
-          if (select.value === casaCorreta[tipo]) {
-            select.style.backgroundColor = "#cceeff";
+    function atualizarOpcoes(tipo) {
+      const selects = Array.from(document.querySelectorAll(`select[name="${tipo}"]`));
+      const valoresSelecionados = selects.map(s => s.value);
+
+      selects.forEach((selectAtual, indexAtual) => {
+        const valoresAnteriores = valoresSelecionados.slice(0, indexAtual).filter(v => v !== "");
+        Array.from(selectAtual.options).forEach(option => {
+          if (valoresAnteriores.includes(option.value) && option.value !== selectAtual.value) {
+            option.disabled = true;
           } else {
-            select.style.backgroundColor = "#ffccd5";
+            option.disabled = false;
           }
         });
-        let casaAcertos = Object.keys(opcoes).filter(tipo =>
-          document.querySelector(`select[name="${tipo}"][data-casa="${i + 1}"]`).value === casaCorreta[tipo]
-        ).length;
+      });
+    }
+
+    ["cor", "nacionalidade", "bebida", "cigarro", "animal"].forEach(tipo => {
+      document.querySelectorAll(`select[name="${tipo}"]`).forEach(select => {
+        select.addEventListener("change", () => atualizarOpcoes(tipo));
+      });
+    });
+
+    function verificarSolucao() {
+      let acertos = 0;
+
+      for (let i = 0; i < 5; i++) {
+        let casaCorreta = solucao[i];
+        let casaSelecionada = {};
+
+        Object.keys(opcoes).forEach(tipo => {
+          const select = document.querySelector(`select[name="${tipo}"][data-casa="${i + 1}"]`);
+          casaSelecionada[tipo] = select.value;
+
+          // Resetando cor antes de verificar
+          select.style.backgroundColor = "white";
+
+          if (select.value === casaCorreta[tipo]) {
+            select.style.backgroundColor = "#cceeff"; // azul claro
+          } else {
+            select.style.backgroundColor = "#ffccd5"; // flamingo claro
+          }
+        });
+
+        let casaAcertos = Object.keys(opcoes).filter(tipo => casaSelecionada[tipo] === casaCorreta[tipo]).length;
         if (casaAcertos === 5) acertos += 1;
       }
 
       let pontos = acertos * 20;
       let qi = 85;
       let nivel = "Abaixo da média";
+
       if (pontos >= 100) { qi = 135; nivel = "Superdotado"; }
       else if (pontos >= 81) { qi = 125; nivel = "Muito acima da média"; }
       else if (pontos >= 61) { qi = 115; nivel = "Acima da média"; }
       else if (pontos >= 41) { qi = 105; nivel = "Média"; }
-      else if (pontos >=
+      else if (pontos >= 21) { qi = 95; nivel = "Média baixa"; }
+
+      document.getElementById("resultado").innerText =
+        `✅ Casas corretas: ${acertos}/5\n🎯 Pontuação: ${pontos}\n🧠 QI estimado: ${qi} (${nivel})`;
+    }
+  </script>
+</body>
+</html>
+
