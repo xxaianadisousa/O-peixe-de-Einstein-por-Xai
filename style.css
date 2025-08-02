@@ -1,9 +1,11 @@
 body {
-  background-image: url('Einstein e o Peixe.png.png');
+ body {
+  /* ... se já houver estilos, mantenha eles */
+  background-image: url('Einstein e o Peixe.png.png'); /* use o nome exato da imagem */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Faz a imagem ficar fixa enquanto rola a página */
+  background-attachment: fixed;
 }
 
 h1 {
@@ -83,6 +85,7 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
