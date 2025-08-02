@@ -1,114 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>O Peixe de Einstein</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1 id="titulo">O Peixe de Einstein</h1>
-    <button onclick="traduzir()">🇬🇧 Versão em inglês</button>
-  </header>
+  <h1>🧠 O Peixe de Einstein</h1>
 
-  <section class="introducao">
-    <p>Dizem que apenas 2% das pessoas conseguem resolver esse desafio de lógica. Sua missão: descobrir quem tem o peixe 🐠.</p>
-  </section>
-
-  <div id="cronometro">⏱️ 300s restantes</div>
-
-  <section id="pistas">
-    <h2>Pistas</h2>
-    <ul>
-      <li>1. O inglês vive na casa vermelha.</li>
-      <li>2. O sueco tem cachorros.</li>
-      <li>3. O dinamarquês bebe chá.</li>
-      <li>4. A casa verde fica à esquerda da branca.</li>
-      <li>5. O homem da casa verde bebe café.</li>
-      <li>6. O homem que fuma Pall Mall cria pássaros.</li>
-      <li>7. O homem da casa amarela fuma Dunhill.</li>
-      <li>8. O homem da casa do meio bebe leite.</li>
-      <li>9. O norueguês vive na primeira casa.</li>
-      <li>10. O homem que fuma Blends vive ao lado do que tem gatos.</li>
-      <li>11. O homem que cria cavalos vive ao lado do que fuma Dunhill.</li>
-      <li>12. O homem que fuma BlueMaster bebe cerveja.</li>
-      <li>13. O alemão fuma Prince.</li>
-      <li>14. O norueguês vive ao lado da casa azul.</li>
-      <li>15. O homem que fuma Blends é vizinho do que bebe água.</li>
-    </ul>
-  </section>
-
-  <section id="tabuleiro">
-    <h2>Casas</h2>
-    <div class="casas-container">
-      <div class="casa" id="casa1" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 1</div>
-      <div class="casa" id="casa2" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 2</div>
-      <div class="casa" id="casa3" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 3</div>
-      <div class="casa" id="casa4" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 4</div>
-      <div class="casa" id="casa5" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 5</div>
+  <div class="container">
+    <div class="casa">
+      <h3>1ª Casa</h3>
+      <input placeholder="Cor">
+      <input placeholder="Nacionalidade">
+      <input placeholder="Bebida">
+      <input placeholder="Cigarro">
+      <input placeholder="Animal">
     </div>
-
-    <h2>Peças</h2>
-    <div class="pecas-container">
-      <!-- Nacionalidades -->
-      <div class="peca" id="ingles" draggable="true" ondragstart="drag(event)">Inglês</div>
-      <div class="peca" id="sueco" draggable="true" ondragstart="drag(event)">Sueco</div>
-      <div class="peca" id="dinamarques" draggable="true" ondragstart="drag(event)">Dinamarquês</div>
-      <div class="peca" id="noruegues" draggable="true" ondragstart="drag(event)">Norueguês</div>
-      <div class="peca" id="alemao" draggable="true" ondragstart="drag(event)">Alemão</div>
-
-      <!-- Bebidas -->
-      <div class="peca" id="cha" draggable="true" ondragstart="drag(event)">Chá</div>
-      <div class="peca" id="cafe" draggable="true" ondragstart="drag(event)">Café</div>
-      <div class="peca" id="leite" draggable="true" ondragstart="drag(event)">Leite</div>
-      <div class="peca" id="cerveja" draggable="true" ondragstart="drag(event)">Cerveja</div>
-      <div class="peca" id="agua" draggable="true" ondragstart="drag(event)">Água</div>
-
-      <!-- Cigarros -->
-      <div class="peca" id="pallmall" draggable="true" ondragstart="drag(event)">Pall Mall</div>
-      <div class="peca" id="dunhill" draggable="true" ondragstart="drag(event)">Dunhill</div>
-      <div class="peca" id="blends" draggable="true" ondragstart="drag(event)">Blends</div>
-      <div class="peca" id="bluemaster" draggable="true" ondragstart="drag(event)">BlueMaster</div>
-      <div class="peca" id="prince" draggable="true" ondragstart="drag(event)">Prince</div>
-
-      <!-- Animais -->
-      <div class="peca" id="cachorro" draggable="true" ondragstart="drag(event)">Cachorro</div>
-      <div class="peca" id="gato" draggable="true" ondragstart="drag(event)">Gato</div>
-      <div class="peca" id="cavalo" draggable="true" ondragstart="drag(event)">Cavalo</div>
-      <div class="peca" id="passaro" draggable="true" ondragstart="drag(event)">Pássaro</div>
-      <div class="peca" id="peixe" draggable="true" ondragstart="drag(event)">Peixe</div>
-
-      <!-- Cores -->
-      <div class="peca" id="vermelha" draggable="true" ondragstart="drag(event)">Vermelha</div>
-      <div class="peca" id="verde" draggable="true" ondragstart="drag(event)">Verde</div>
-      <div class="peca" id="branca" draggable="true" ondragstart="drag(event)">Branca</div>
-      <div class="peca" id="amarela" draggable="true" ondragstart="drag(event)">Amarela</div>
-      <div class="peca" id="azul" draggable="true" ondragstart="drag(event)">Azul</div>
+    <div class="casa">
+      <h3>2ª Casa</h3>
+      <input placeholder="Cor">
+      <input placeholder="Nacionalidade">
+      <input placeholder="Bebida">
+      <input placeholder="Cigarro">
+      <input placeholder="Animal">
     </div>
-  </section>
+    <div class="casa">
+      <h3>3ª Casa</h3>
+      <input placeholder="Cor">
+      <input placeholder="Nacionalidade">
+      <input placeholder="Bebida">
+      <input placeholder="Cigarro">
+      <input placeholder="Animal">
+    </div>
+    <div class="casa">
+      <h3>4ª Casa</h3>
+      <input placeholder="Cor">
+      <input placeholder="Nacionalidade">
+      <input placeholder="Bebida">
+      <input placeholder="Cigarro">
+      <input placeholder="Animal">
+    </div>
+    <div class="casa">
+      <h3>5ª Casa</h3>
+      <input placeholder="Cor">
+      <input placeholder="Nacionalidade">
+      <input placeholder="Bebida">
+      <input placeholder="Cigarro">
+      <input placeholder="Animal">
+    </div>
+  </div>
 
-  <button onclick="verificarSolucao()">✅ Verificar solução</button>
+  <div class="painel">
+    <h2>Dicas</h2>
+    <div class="dicas">
+      <p onclick="destacarDica(this)">O Inglês vive na casa Vermelha.</p>
+      <p onclick="destacarDica(this)">O Sueco tem Cachorros como animais de estimação.</p>
+      <p onclick="destacarDica(this)">O Dinamarquês bebe Chá.</p>
+      <p onclick="destacarDica(this)">A casa Verde fica do lado esquerdo da casa Branca.</p>
+      <p onclick="destacarDica(this)">O homem que vive na casa Verde bebe Café.</p>
+      <p onclick="destacarDica(this)">O homem que fuma Pall Mall cria Pássaros.</p>
+      <p onclick="destacarDica(this)">O homem que vive na casa Amarela fuma Dunhill.</p>
+      <p onclick="destacarDica(this)">O homem que vive na casa do meio bebe Leite.</p>
+      <p onclick="destacarDica(this)">O Norueguês vive na primeira casa.</p>
+      <p onclick="destacarDica(this)">O homem que fuma Blends vive ao lado do que tem Gatos.</p>
+      <p onclick="destacarDica(this)">O homem que cria Cavalos vive ao lado do que fuma Dunhill.</p>
+      <p onclick="destacarDica(this)">O homem que fuma BlueMaster bebe Cerveja.</p>
+      <p onclick="destacarDica(this)">O Alemão fuma Prince.</p>
+      <p onclick="destacarDica(this)">O Norueguês vive ao lado da casa Azul.</p>
+      <p onclick="destacarDica(this)">O homem que fuma Blends é vizinho do que bebe Água.</p>
+    </div>
+  </div>
+
+  <div class="botoes">
+    <button onclick="reiniciarJogo()">🔄 Reiniciar</button>
+    <button onclick="mostrarDicaAleatoria()">💡 Dica Aleatória</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-<div class="quadro-desafio">
-  <div class="casa">
-    <p>1ª Casa</p>
-    <input placeholder="Cor">
-    <input placeholder="Nacionalidade">
-    <input placeholder="Bebida">
-    <input placeholder="Cigarro">
-    <input placeholder="Animal">
-  </div>
-  <div class="casa">
-    <p>2ª Casa</p>
-    <input placeholder="Cor">
-    <input placeholder="Nacionalidade">
-    <input placeholder="Bebida">
-    <input placeholder="Cigarro">
-    <input placeholder="Animal">
-  </div>
-  <!-- Repetir para Casa 3, 4 e 5 -->
-</div>
