@@ -162,16 +162,6 @@
       document.getElementById("resultado").innerText =
         `✅ Casas corretas: ${acertos}/5\n🎯 Pontuação: ${pontos}\n🧠 QI estimado: ${qi} (${nivel})`;
     }
-  </script>
-</body>
-</html>
-<h3>📝 Deixe sua frase sobre o desafio!</h3>
-<form id="comentario-form" onsubmit="salvarComentario(); return false;">
-  <textarea id="comentario" rows="3" placeholder="Escreva sua experiência..."></textarea><br>
-  <input type="text" id="nome" placeholder="Seu nome (opcional)">
-  <input type="text" id="cidade" placeholder="Cidade (opcional)">
-  <button type="submit">Enviar</button>
-</form>
 
 <script>
   <button onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
@@ -183,6 +173,7 @@
     location.reload(); // Recarrega a página
  
   }
+
 
 
 
