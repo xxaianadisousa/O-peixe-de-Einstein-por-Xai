@@ -26,6 +26,8 @@
     }
     .dicas h2 { margin-top: 0; }
     ol { padding-left: 20px; }
+    #resultado { margin-top: 20px; font-weight: bold; }
+    button { margin-top: 20px; padding: 10px 15px; font-size: 16px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -56,6 +58,9 @@
     </div>
   </div>
 
+  <button onclick="verificarSolucao()">Verificar QI</button>
+  <div id="resultado"></div>
+
   <script>
     const opcoes = {
       cor: ["vermelho", "verde", "branco", "azul", "amarelo"],
@@ -64,6 +69,14 @@
       cigarro: ["pallmall", "dunhill", "bluemaster", "prince", "blend"],
       animal: ["gato", "cachorro", "pássaro", "cavalo", "peixe"]
     };
+
+    const solucao = [
+      { cor: "amarelo", nacionalidade: "noruegues", bebida: "agua", cigarro: "dunhill", animal: "gato" },
+      { cor: "azul", nacionalidade: "dinamarques", bebida: "cha", cigarro: "blends", animal: "cavalo" },
+      { cor: "vermelho", nacionalidade: "ingles", bebida: "leite", cigarro: "pallmall", animal: "pássaro" },
+      { cor: "verde", nacionalidade: "alemao", bebida: "cafe", cigarro: "prince", animal: "peixe" },
+      { cor: "branco", nacionalidade: "sueco", bebida: "cerveja", cigarro: "bluemaster", animal: "cachorro" }
+    ];
 
     const container = document.getElementById("casas");
     for (let i = 1; i <= 5; i++) {
@@ -100,6 +113,34 @@
         select.addEventListener("change", () => atualizarOpcoes(tipo));
       });
     });
+
+    function verificarSolucao() {
+      let acertos = 0;
+      for (let i = 0; i < 5; i++) {
+        let casaCorreta = solucao[i];
+        let casaSelecionada = {};
+        Object.keys(opcoes).forEach(tipo => {
+          const select = document.querySelector(`select[name="${tipo}"][data-casa="${i + 1}"]`);
+          casaSelecionada[tipo] = select.value;
+        });
+
+        let casaAcertos = Object.keys(opcoes).filter(tipo => casaSelecionada[tipo] === casaCorreta[tipo]).length;
+        if (casaAcertos === 5) acertos += 1;
+      }
+
+      let pontos = acertos * 20;
+      let qi = 85;
+      let nivel = "Abaixo da média";
+
+      if (pontos >= 100) { qi = 135; nivel = "Superdotado"; }
+      else if (pontos >= 81) { qi = 125; nivel = "Muito acima da média"; }
+      else if (pontos >= 61) { qi = 115; nivel = "Acima da média"; }
+      else if (pontos >= 41) { qi = 105; nivel = "Média"; }
+      else if (pontos >= 21) { qi = 95; nivel = "Média baixa"; }
+
+      document.getElementById("resultado").innerText =
+        `✅ Casas corretas: ${acertos}/5\n🎯 Pontuação: ${pontos}\n🧠 QI estimado: ${qi} (${nivel})`;
+    }
   </script>
 </body>
 </html>
