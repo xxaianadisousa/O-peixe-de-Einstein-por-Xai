@@ -188,27 +188,7 @@
     location.reload(); // Recarrega a página
  
   }
-</script>
-  function salvarComentario() {
-    const texto = document.getElementById("comentario").value.trim();
-    const nome = document.getElementById("nome").value.trim();
-    const cidade = document.getElementById("cidade").value.trim();
 
-    if (texto === "") return alert("Digite uma frase!");
 
-    let fraseFinal = `“${texto}”`;
-    if (nome || cidade) {
-      fraseFinal += ` — ${nome || "Anônimo"}, ${cidade || "Brasil"}`;
-    }
-
-    const li = document.createElement("li");
-    li.textContent = fraseFinal;
-    document.getElementById("lista-comentarios").prepend(li);
-
-    document.getElementById("comentario").value = "";
-    document.getElementById("nome").value = "";
-    document.getElementById("cidade").value = "";
-  }
-</script>
 
 
