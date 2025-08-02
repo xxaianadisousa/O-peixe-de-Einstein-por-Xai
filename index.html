@@ -2,78 +2,31 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>O Peixe de Einstein por Xai</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>O Peixe de Einstein por Xai/title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🐠 O Peixe de Einstein por Xai</h1>
+  <h1>Desvende Onde Está o Peixe! 🐟</h1>
+  <p class="instrucao">Escolha uma cor, um animal e um objeto por casa. Cada opção só pode ser usada uma vez!</p>
 
-  <div class="container">
+  <div id="game">
     <!-- Casas de 1 a 5 -->
-    <div class="casa"><h3>1ª Casa</h3>
-      <label>Cor: <select><option></option><option>Vermelha</option><option>Verde</option><option>Branca</option><option>Amarela</option><option>Azul</option></select></label>
-      <label>Nacionalidade: <select><option></option><option>Inglês</option><option>Sueco</option><option>Dinamarquês</option><option>Norueguês</option><option>Alemão</option></select></label>
-      <label>Bebida: <select><option></option><option>Chá</option><option>Café</option><option>Cerveja</option><option>Leite</option><option>Água</option></select></label>
-      <label>Cigarro: <select><option></option><option>Pall Mall</option><option>Dunhill</option><option>Blends</option><option>BlueMaster</option><option>Prince</option></select></label>
-      <label>Animal: <select><option></option><option>Cachorro</option><option>Gato</option><option>Pássaro</option><option>Cavalo</option><option>Peixe</option></select></label>
+    <div class="casa" id="casa1">
+      <h2>Casa 1</h2>
+      <label>Cor:</label>
+      <select><option value="">—</option><option>Vermelha</option><option>Azul</option><option>Verde</option><option>Amarela</option><option>Branca</option></select>
+      <label>Animal:</label>
+      <select><option value="">—</option><option>Peixe</option><option>Gato</option><option>Cachorro</option><option>Pássaro</option><option>Porquinho-da-índia</option></select>
+      <label>Objeto:</label>
+      <select><option value="">—</option><option>Livro</option><option>Relógio</option><option>Caneca</option><option>Quadro</option><option>Chave</option></select>
     </div>
 
-    <div class="casa"><h3>2ª Casa</h3>
-      <label>Cor: <select><option></option><option>Vermelha</option><option>Verde</option><option>Branca</option><option>Amarela</option><option>Azul</option></select></label>
-      <label>Nacionalidade: <select><option></option><option>Inglês</option><option>Sueco</option><option>Dinamarquês</option><option>Norueguês</option><option>Alemão</option></select></label>
-      <label>Bebida: <select><option></option><option>Chá</option><option>Café</option><option>Cerveja</option><option>Leite</option><option>Água</option></select></label>
-      <label>Cigarro: <select><option></option><option>Pall Mall</option><option>Dunhill</option><option>Blends</option><option>BlueMaster</option><option>Prince</option></select></label>
-      <label>Animal: <select><option></option><option>Cachorro</option><option>Gato</option><option>Pássaro</option><option>Cavalo</option><option>Peixe</option></select></label>
-    </div>
-
-    <div class="casa"><h3>3ª Casa</h3>
-      <label>Cor: <select><option></option><option>Vermelha</option><option>Verde</option><option>Branca</option><option>Amarela</option><option>Azul</option></select></label>
-      <label>Nacionalidade: <select><option></option><option>Inglês</option><option>Sueco</option><option>Dinamarquês</option><option>Norueguês</option><option>Alemão</option></select></label>
-      <label>Bebida: <select><option></option><option>Chá</option><option>Café</option><option>Cerveja</option><option>Leite</option><option>Água</option></select></label>
-      <label>Cigarro: <select><option></option><option>Pall Mall</option><option>Dunhill</option><option>Blends</option><option>BlueMaster</option><option>Prince</option></select></label>
-      <label>Animal: <select><option></option><option>Cachorro</option><option>Gato</option><option>Pássaro</option><option>Cavalo</option><option>Peixe</option></select></label>
-    </div>
-
-    <div class="casa"><h3>4ª Casa</h3>
-      <label>Cor: <select><option></option><option>Vermelha</option><option>Verde</option><option>Branca</option><option>Amarela</option><option>Azul</option></select></label>
-      <label>Nacionalidade: <select><option></option><option>Inglês</option><option>Sueco</option><option>Dinamarquês</option><option>Norueguês</option><option>Alemão</option></select></label>
-      <label>Bebida: <select><option></option><option>Chá</option><option>Café</option><option>Cerveja</option><option>Leite</option><option>Água</option></select></label>
-      <label>Cigarro: <select><option></option><option>Pall Mall</option><option>Dunhill</option><option>Blends</option><option>BlueMaster</option><option>Prince</option></select></label>
-      <label>Animal: <select><option></option><option>Cachorro</option><option>Gato</option><option>Pássaro</option><option>Cavalo</option><option>Peixe</option></select></label>
-    </div>
-
-    <div class="casa"><h3>5ª Casa</h3>
-      <label>Cor: <select><option></option><option>Vermelha</option><option>Verde</option><option>Branca</option><option>Amarela</option><option>Azul</option></select></label>
-      <label>Nacionalidade: <select><option></option><option>Inglês</option><option>Sueco</option><option>Dinamarquês</option><option>Norueguês</option><option>Alemão</option></select></label>
-      <label>Bebida: <select><option></option><option>Chá</option><option>Café</option><option>Cerveja</option><option>Leite</option><option>Água</option></select></label>
-      <label>Cigarro: <select><option></option><option>Pall Mall</option><option>Dunhill</option><option>Blends</option><option>BlueMaster</option><option>Prince</option></select></label>
-      <label>Animal: <select><option></option><option>Cachorro</option><option>Gato</option><option>Pássaro</option><option>Cavalo</option><option>Peixe</option></select></label>
-    </div>
+    <div class="casa" id="casa2"> <h2>Casa 2</h2> ... mesma estrutura ... </div>
+    <div class="casa" id="casa3"> <h2>Casa 3</h2> ... mesma estrutura ... </div>
+    <div class="casa" id="casa4"> <h2>Casa 4</h2> ... mesma estrutura ... </div>
+    <div class="casa" id="casa5"> <h2>Casa 5</h2> ... mesma estrutura ... </div>
   </div>
 
-  <!-- Aqui ficam as dicas e os botões que já funcionam -->
-  <div class="painel">
-    <h2>Dicas</h2>
-    <div class="dicas">
-      <p onclick="destacarDica(this)">O Inglês vive na casa Vermelha.</p>
-      <p onclick="destacarDica(this)">O Sueco tem Cachorros como animais de estimação.</p>
-      <p onclick="destacarDica(this)">O Dinamarquês bebe Chá.</p>
-      <p onclick="destacarDica(this)">A casa Verde fica do lado esquerdo da casa Branca.</p>
-      <p onclick="destacarDica(this)">O homem que vive na casa Verde bebe Café.</p>
-      <p onclick="destacarDica(this)">O homem que fuma Pall Mall cria Pássaros.</p>
-      <p onclick="destacarDica(this)">O homem que vive na casa Amarela fuma Dunhill.</p>
-      <p onclick="destacarDica(this)">O homem que vive na casa do meio bebe Leite.</p>
-      <p onclick="destacarDica(this)">O Norueguês vive na primeira casa.</p>
-      <p onclick="destacarDica(this)">O homem que fuma Blends vive ao lado do que tem Gatos.</p>
-      <p onclick="destacarDica(this)">O homem que cria Cavalos vive ao lado do que fuma Dunhill.</p>
-      <p onclick="destacarDica(this)">O homem que fuma BlueMaster bebe Cerveja.</p>
-      <p onclick="destacarDica(this)">O Alemão fuma Prince.</p>
-      <p onclick="destacarDica(this)">O Norueguês vive ao lado da casa Azul.</p>
-      <p onclick="destacarDica(this)">O homem que fuma Blends é vizinho do que bebe Água.</p>
-    </div>
-  </div>
-
-  <div class="botoes">
-    <
-
+  <script src="script.js"></script>
+</body>
+</html>
