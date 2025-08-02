@@ -1,67 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>O Peixe de Einstein</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <title>Enigma das Casas</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    .casa { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    .casa h3 { margin-top: 0; }
+    select { margin: 5px; }
+  </style>
 </head>
 <body>
-  <h1>🐠 O Peixe de Einstein</h1>
+  <h1>Enigma das Casas</h1>
 
-  <div class="container">
-    <!-- Casa 1 -->
-    <div class="casa"><h3>1ª Casa</h3>
-      <label>Cor: <select name="cor"><option></option><option>Vermelha</option><option>Verde</option><option>Branca</option><option>Amarela</option><option>Azul</option></select></label>
-      <label>Nacionalidade: <select name="nacionalidade"><option></option><option>Inglês</option><option>Sueco</option><option>Dinamarquês</option><option>Norueguês</option><option>Alemão</option></select></label>
-      <label>Bebida: <select name="bebida"><option></option><option>Chá</option><option>Café</option><option>Cerveja</option><option>Leite</option><option>Água</option></select></label>
-      <label>Cigarro: <select name="cigarro"><option></option><option>Pall Mall</option><option>Dunhill</option><option>Blends</option><option>BlueMaster</option><option>Prince</option></select></label>
-      <label>Animal: <select name="animal"><option></option><option>Cachorro</option><option>Gato</option><option>Pássaro</option><option>Cavalo</option><option>Peixe</option></select></label>
-    </div>
-
-    <!-- Repita o bloco acima para Casa 2 a 5 (mesma estrutura, só troque o título) -->
-    <div class="casa"><h3>2ª Casa</h3>... <!-- mesma estrutura --></div>
-    <div class="casa"><h3>3ª Casa</h3>... <!-- mesma estrutura --></div>
-    <div class="casa"><h3>4ª Casa</h3>... <!-- mesma estrutura --></div>
-    <div class="casa"><h3>5ª Casa</h3>... <!-- mesma estrutura --></div>
+  <div class="casa">
+    <h3>Casa 1</h3>
+    <select name="cor">
+      <option value="">-- cor --</option>
+      <option value="vermelho">Vermelho</option>
+      <option value="verde">Verde</option>
+      <option value="branco">Branco</option>
+      <option value="azul">Azul</option>
+      <option value="amarelo">Amarelo</option>
+    </select>
+    <select name="nacionalidade">
+      <option value="">-- nacionalidade --</option>
+      <option value="noruegues">Norueguês</option>
+      <option value="ingles">Inglês</option>
+      <option value="dinamarques">Dinamarquês</option>
+      <option value="alemao">Alemão</option>
+      <option value="sueco">Sueco</option>
+    </select>
+    <select name="bebida">
+      <option value="">-- bebida --</option>
+      <option value="agua">Água</option>
+      <option value="cafe">Café</option>
+      <option value="leite">Leite</option>
+      <option value="cerveja">Cerveja</option>
+      <option value="cha">Chá</option>
+    </select>
+    <select name="cigarro">
+      <option value="">-- cigarro --</option>
+      <option value="pallmall">Pall Mall</option>
+      <option value="dunhill">Dunhill</option>
+      <option value="bluemaster">Blue Master</option>
+      <option value="prince">Prince</option>
+      <option value="blend">Blend</option>
+    </select>
+    <select name="animal">
+      <option value="">-- animal --</option>
+      <option value="gato">Gato</option>
+      <option value="cachorro">Cachorro</option>
+      <option value="pássaro">Pássaro</option>
+      <option value="cavalo">Cavalo</option>
+      <option value="peixe">Peixe</option>
+    </select>
   </div>
 
-  <!-- Quadro fixo de dicas à direita -->
-  <div class="quadro-dicas">
-    <h2>Dicas do Enigma</h2>
-    <ul>
-      <li>O Inglês vive na casa Vermelha.</li>
-      <li>3ª casa</li>
-      <li>4ª casa</li>
-      <li>O Sueco tem Cachorros como animais de estimação.</li>
-      <li>O Dinamarquês bebe Chá.</li>
-      <li>A casa Verde fica do lado esquerdo da casa Branca.</li>
-      <li>O homem que vive na casa Verde bebe Café.</li>
-      <li>O homem que fuma Pall Mall cria Pássaros.</li>
-      <li>O homem que vive na casa Amarela fuma Dunhill.</li>
-      <li>5ª casa</li>
-      <li>O homem que vive na casa do meio bebe Leite.</li>
-      <li>O Norueguês vive na primeira casa.</li>
-      <li>O homem que fuma Blends vive ao lado do que tem Gatos.</li>
-      <li>O homem que cria Cavalos vive ao lado do que fuma Dunhill.</li>
-      <li>O homem que fuma BlueMaster bebe Cerveja.</li>
-      <li>O Alemão fuma Prince.</li>
-      <li>O Norueguês vive ao lado da casa Azul.</li>
-      <li>O homem que fuma Blends é vizinho do que bebe Água.</li>
-    </ul>
-  </div>
+  <!-- Copie e cole a mesma estrutura acima para Casa 2, 3, 4, 5, apenas alterando o título para Casa X -->
+  <!-- Para facilitar, posso gerar todas as casas pra você também, se quiser! -->
 
-  <!-- Script para desabilitar opções nas casas seguintes -->
   <script>
     function atualizarOpcoes(tipo) {
       const selects = Array.from(document.querySelectorAll(`select[name="${tipo}"]`));
-      const selecionados = selects.map(s => s.value);
+      const valoresSelecionados = selects.map(s => s.value);
 
-      selects.forEach((atual, indexAtual) => {
-        const anteriores = selecionados.slice(0, indexAtual).filter(v => v !== "");
+      selects.forEach((selectAtual, indexAtual) => {
+        const valoresAnteriores = valoresSelecionados.slice(0, indexAtual).filter(v => v !== "");
 
-        Array.from(atual.options).forEach(opt => {
-          opt.disabled = anteriores.includes(opt.value) && opt.value !== atual.value;
+        Array.from(selectAtual.options).forEach(option => {
+          if (valoresAnteriores.includes(option.value) && option.value !== selectAtual.value) {
+            option.disabled = true;
+          } else {
+            option.disabled = false;
+          }
         });
       });
     }
