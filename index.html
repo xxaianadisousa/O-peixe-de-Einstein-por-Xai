@@ -165,3 +165,38 @@
   </script>
 </body>
 </html>
+<h3>📝 Deixe sua frase sobre o desafio!</h3>
+<form id="comentario-form" onsubmit="salvarComentario(); return false;">
+  <textarea id="comentario" rows="3" placeholder="Escreva sua experiência..."></textarea><br>
+  <input type="text" id="nome" placeholder="Seu nome (opcional)">
+  <input type="text" id="cidade" placeholder="Cidade (opcional)">
+  <button type="submit">Enviar</button>
+</form>
+
+<div id="comentarios-recentes">
+  <h4>💬 Comentários recentes:</h4>
+  <ul id="lista-comentarios"></ul>
+</div>
+
+<script>
+  function salvarComentario() {
+    const texto = document.getElementById("comentario").value.trim();
+    const nome = document.getElementById("nome").value.trim();
+    const cidade = document.getElementById("cidade").value.trim();
+
+    if (texto === "") return alert("Digite uma frase!");
+
+    let fraseFinal = `“${texto}”`;
+    if (nome || cidade) {
+      fraseFinal += ` — ${nome || "Anônimo"}, ${cidade || "Brasil"}`;
+    }
+
+    const li = document.createElement("li");
+    li.textContent = fraseFinal;
+    document.getElementById("lista-comentarios").prepend(li);
+
+    document.getElementById("comentario").value = "";
+    document.getElementById("nome").value = "";
+    document.getElementById("cidade").value = "";
+  }
+</script>
