@@ -51,34 +51,26 @@
       <label>Animal: <select name="animal">...</select></label>
     </div>
   </div>
-
-  <div class="painel">
-    <h2>Dicas</h2>
-    <div class="dicas">
-      <!-- Dicas do enigma aqui -->
-      <p onclick="destacarDica(this)">O Inglês vive na casa Vermelha.</p>
-      <p onclick="destacarDica(this)">O Sueco tem Cachorros como animais de estimação.</p>
-      <!-- ... continue com suas dicas ... -->
-    </div>
-  </div>
-
-  <script>
-    function atualizarOpcoes(tipo) {
-      const selects = document.querySelectorAll(`select[name="${tipo}"]`);
-      const selecionados = Array.from(selects).map(s => s.value).filter(v => v !== "");
-      selects.forEach(select => {
-        Array.from(select.options).forEach(option => {
-          option.disabled = selecionados.includes(option.value) && option.value !== select.value;
-        });
-      });
-    }
-
-    ["cor", "nacionalidade", "bebida", "cigarro", "animal"].forEach(tipo => {
-      const selects = document.querySelectorAll(`select[name="${tipo}"]`);
-      selects.forEach(select => {
-        select.addEventListener("change", () => atualizarOpcoes(tipo));
-      });
-    });
-  </script>
-</body>
-</html>
+<div class="quadro-dicas">
+  <h2>Dicas do Enigma</h2>
+  <ul>
+    <li>O Inglês vive na casa Vermelha.</li>
+    <li>3ª casa</li>
+    <li>4ª casa</li>
+    <li>O Sueco tem Cachorros como animais de estimação.</li>
+    <li>O Dinamarquês bebe Chá.</li>
+    <li>A casa Verde fica do lado esquerdo da casa Branca.</li>
+    <li>O homem que vive na casa Verde bebe Café.</li>
+    <li>O homem que fuma Pall Mall cria Pássaros.</li>
+    <li>O homem que vive na casa Amarela fuma Dunhill.</li>
+    <li>5ª casa</li>
+    <li>O homem que vive na casa do meio bebe Leite.</li>
+    <li>O Norueguês vive na primeira casa.</li>
+    <li>O homem que fuma Blends vive ao lado do que tem Gatos.</li>
+    <li>O homem que cria Cavalos vive ao lado do que fuma Dunhill.</li>
+    <li>O homem que fuma BlueMaster bebe Cerveja.</li>
+    <li>O Alemão fuma Prince.</li>
+    <li>O Norueguês vive ao lado da casa Azul.</li>
+    <li>O homem que fuma Blends é vizinho do que bebe Água.</li>
+  </ul>
+</div>
