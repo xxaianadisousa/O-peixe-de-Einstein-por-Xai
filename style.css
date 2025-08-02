@@ -3,6 +3,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed; /* Faz a imagem ficar fixa enquanto rola a página */
 }
 
 h1 {
@@ -82,5 +83,6 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
 
 
