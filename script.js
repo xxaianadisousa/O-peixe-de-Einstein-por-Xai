@@ -3,9 +3,8 @@ function destacarDica(el) {
 }
 
 function reiniciarJogo() {
-  document.querySelectorAll('.casa input').forEach(input => {
-    input.value = "";
-    input.style.borderColor = "#aaa";
+  document.querySelectorAll('.casa select').forEach(select => {
+    select.selectedIndex = 0;
   });
 }
 
