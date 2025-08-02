@@ -21,31 +21,70 @@
   <section id="pistas">
     <h2>Pistas</h2>
     <ul>
-      <li>O britânico vive na casa vermelha.</li>
-      <li>O sueco tem cachorros de estimação.</li>
-      <li>O dinamarquês bebe chá.</li>
-      <!-- Continue com todas as 15 pistas -->
+      <li>1. O inglês vive na casa vermelha.</li>
+      <li>2. O sueco tem cachorros.</li>
+      <li>3. O dinamarquês bebe chá.</li>
+      <li>4. A casa verde fica à esquerda da branca.</li>
+      <li>5. O homem da casa verde bebe café.</li>
+      <li>6. O homem que fuma Pall Mall cria pássaros.</li>
+      <li>7. O homem da casa amarela fuma Dunhill.</li>
+      <li>8. O homem da casa do meio bebe leite.</li>
+      <li>9. O norueguês vive na primeira casa.</li>
+      <li>10. O homem que fuma Blends vive ao lado do que tem gatos.</li>
+      <li>11. O homem que cria cavalos vive ao lado do que fuma Dunhill.</li>
+      <li>12. O homem que fuma BlueMaster bebe cerveja.</li>
+      <li>13. O alemão fuma Prince.</li>
+      <li>14. O norueguês vive ao lado da casa azul.</li>
+      <li>15. O homem que fuma Blends é vizinho do que bebe água.</li>
     </ul>
   </section>
 
   <section id="tabuleiro">
+    <h2>Casas</h2>
     <div class="casas-container">
-      <div class="casa" id="casa1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div class="casa" id="casa2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div class="casa" id="casa3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div class="casa" id="casa4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div class="casa" id="casa5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="casa" id="casa1" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 1</div>
+      <div class="casa" id="casa2" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 2</div>
+      <div class="casa" id="casa3" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 3</div>
+      <div class="casa" id="casa4" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 4</div>
+      <div class="casa" id="casa5" ondrop="drop(event)" ondragover="allowDrop(event)">Casa 5</div>
     </div>
 
     <h2>Peças</h2>
     <div class="pecas-container">
-      <div class="peca" draggable="true" ondragstart="drag(event)" id="alemao">
-        <img src="img/alemao.png" alt="Alemão" />
-      </div>
-      <div class="peca" draggable="true" ondragstart="drag(event)" id="peixe">
-        <img src="img/peixe.png" alt="Peixe" />
-      </div>
-      <!-- Adicione as outras 23 peças aqui com seus respectivos nomes e imagens -->
+      <!-- Nacionalidades -->
+      <div class="peca" id="ingles" draggable="true" ondragstart="drag(event)">Inglês</div>
+      <div class="peca" id="sueco" draggable="true" ondragstart="drag(event)">Sueco</div>
+      <div class="peca" id="dinamarques" draggable="true" ondragstart="drag(event)">Dinamarquês</div>
+      <div class="peca" id="noruegues" draggable="true" ondragstart="drag(event)">Norueguês</div>
+      <div class="peca" id="alemao" draggable="true" ondragstart="drag(event)">Alemão</div>
+
+      <!-- Bebidas -->
+      <div class="peca" id="cha" draggable="true" ondragstart="drag(event)">Chá</div>
+      <div class="peca" id="cafe" draggable="true" ondragstart="drag(event)">Café</div>
+      <div class="peca" id="leite" draggable="true" ondragstart="drag(event)">Leite</div>
+      <div class="peca" id="cerveja" draggable="true" ondragstart="drag(event)">Cerveja</div>
+      <div class="peca" id="agua" draggable="true" ondragstart="drag(event)">Água</div>
+
+      <!-- Cigarros -->
+      <div class="peca" id="pallmall" draggable="true" ondragstart="drag(event)">Pall Mall</div>
+      <div class="peca" id="dunhill" draggable="true" ondragstart="drag(event)">Dunhill</div>
+      <div class="peca" id="blends" draggable="true" ondragstart="drag(event)">Blends</div>
+      <div class="peca" id="bluemaster" draggable="true" ondragstart="drag(event)">BlueMaster</div>
+      <div class="peca" id="prince" draggable="true" ondragstart="drag(event)">Prince</div>
+
+      <!-- Animais -->
+      <div class="peca" id="cachorro" draggable="true" ondragstart="drag(event)">Cachorro</div>
+      <div class="peca" id="gato" draggable="true" ondragstart="drag(event)">Gato</div>
+      <div class="peca" id="cavalo" draggable="true" ondragstart="drag(event)">Cavalo</div>
+      <div class="peca" id="passaro" draggable="true" ondragstart="drag(event)">Pássaro</div>
+      <div class="peca" id="peixe" draggable="true" ondragstart="drag(event)">Peixe</div>
+
+      <!-- Cores -->
+      <div class="peca" id="vermelha" draggable="true" ondragstart="drag(event)">Vermelha</div>
+      <div class="peca" id="verde" draggable="true" ondragstart="drag(event)">Verde</div>
+      <div class="peca" id="branca" draggable="true" ondragstart="drag(event)">Branca</div>
+      <div class="peca" id="amarela" draggable="true" ondragstart="drag(event)">Amarela</div>
+      <div class="peca" id="azul" draggable="true" ondragstart="drag(event)">Azul</div>
     </div>
   </section>
 
