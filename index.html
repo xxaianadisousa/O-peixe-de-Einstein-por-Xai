@@ -1,60 +1,150 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Einstein por Xai</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🧠 Einstein por Xai</h1>
-  <p>Descubra quem tem peixes — e por quê!</p>
-  <p id="cronometro">⏱️ Tempo: 5:00</p>
+  <header>
+    <h1>Einstein por Xai 🧠</h1>
+  </header>
 
-  <div id="tabuleiro">
-    <div class="casa" data-pos="1"></div>
-    <div class="casa" data-pos="2"></div>
-    <div class="casa" data-pos="3"></div>
-    <div class="casa" data-pos="4"></div>
-    <div class="casa" data-pos="5"></div>
-  </div>
+  <section id="pistas">
+    <h2>Pistas</h2>
+    <ol>
+      <li>O inglês vive na casa vermelha.</li>
+      <li>O sueco tem cachorros.</li>
+      <li>O dinamarquês bebe chá.</li>
+      <li>A casa verde fica do lado esquerdo da branca.</li>
+      <li>O homem da casa verde bebe café.</li>
+      <li>Pall Mall → pássaros.</li>
+      <li>Casa do meio → leite.</li>
+      <li>Casa amarela → Dunhill.</li>
+      <li>Norueguês → primeira casa.</li>
+      <li>Blends → vizinho do homem com gatos.</li>
+      <li>Cavalos → vizinho do fumante de Dunhill.</li>
+      <li>BlueMaster → cerveja.</li>
+      <li>Alemão → Prince.</li>
+      <li>Norueguês → ao lado da casa azul.</li>
+      <li>Blends → vizinho do que bebe água.</li>
+    </ol>
+  </section>
 
-  <h2>🧩 Peças</h2>
-  <div id="pecas">
-    <div class="peca" draggable="true">Britânico</div>
-    <div class="peca" draggable="true">Norueguês</div>
-    <div class="peca" draggable="true">Alemão</div>
-    <div class="peca" draggable="true">Sueco</div>
-    <div class="peca" draggable="true">Dinamarquês</div>
-    <div class="peca" draggable="true">Água</div>
-    <div class="peca" draggable="true">Café</div>
-    <div class="peca" draggable="true">Chá</div>
-    <div class="peca" draggable="true">Leite</div>
-    <div class="peca" draggable="true">Cerveja</div>
-    <div class="peca" draggable="true">Gato</div>
-    <div class="peca" draggable="true">Peixes</div>
-    <div class="peca" draggable="true">Cachorro</div>
-    <div class="peca" draggable="true">Cavalo</div>
-    <div class="peca" draggable="true">Pássaros</div>
-    <div class="peca" draggable="true">Dunhill</div>
-    <div class="peca" draggable="true">Blends</div>
-    <div class="peca" draggable="true">Prince</div>
-    <div class="peca" draggable="true">Pall Mall</div>
-    <div class="peca" draggable="true">Blue Master</div>
-    <div class="peca" draggable="true">Amarela</div>
-    <div class="peca" draggable="true">Verde</div>
-    <div class="peca" draggable="true">Branca</div>
-    <div class="peca" draggable="true">Vermelha</div>
-    <div class="peca" draggable="true">Azul</div>
-  </div>
+  <section id="tabuleiro">
+    <h2>Casas</h2>
+    <div class="grid">
+      <!-- 5 colunas de casas -->
+      <div class="casa">Casa 1</div>
+      <div class="casa">Casa 2</div>
+      <div class="casa">Casa 3</div>
+      <div class="casa">Casa 4</div>
+      <div class="casa">Casa 5</div>
+    </div>
+    <div class="atributos">
+      <!-- Linhas: Cor / Nacionalidade / Bebida / Cigarro / Animal -->
+    </div>
+  </section>
 
-  <button onclick="verificar()">✅ Verificar</button>
-  <p id="mensagem"></p>
-
-  <div id="conquistasPainel">
-    <h3>Conquistas desbloqueadas:</h3>
-    <ul id="listaConquistas"></ul>
-  </div>
+  <section id="pecas">
+    <h2>Peças</h2>
+    <div class="grupo">
+      <h3>Nacionalidades</h3>
+      <div class="pecas">
+        <img src="img/ingles.png" alt="Inglês" />
+        <img src="img/sueco.png" alt="Sueco" />
+        <img src="img/dinamarques.png" alt="Dinamarquês" />
+        <img src="img/noruegues.png" alt="Norueguês" />
+        <img src="img/alemao.png" alt="Alemão" />
+      </div>
+    </div>
+    <!-- Repita isso para bebidas, cigarros, animais e cores -->
+  </section>
 
   <script src="script.js"></script>
 </body>
 </html>
+<!-- Nacionalidades -->
+<h2>Nacionalidades</h2>
+<img src="img/ingles.png" alt="Inglês">
+<img src="img/sueco.png" alt="Sueco">
+<img src="img/dinamarques.png" alt="Dinamarquês">
+<img src="img/noruegues.png" alt="Norueguês">
+<img src="img/alemao.png" alt="Alemão">
+
+<!-- Bebidas -->
+<h2>Bebidas</h2>
+<img src="img/cha.png" alt="Chá">
+<img src="img/cafe.png" alt="Café">
+<img src="img/leite.png" alt="Leite">
+<img src="img/cerveja.png" alt="Cerveja">
+<img src="img/agua.png" alt="Água">
+
+<!-- Cigarros -->
+<h2>Cigarros</h2>
+<img src="img/pallmall.png" alt="Pall Mall">
+<img src="img/dunhill.png" alt="Dunhill">
+<img src="img/blends.png" alt="Blends">
+<img src="img/bluemaster.png" alt="BlueMaster">
+<img src="img/prince.png" alt="Prince">
+
+<!-- Animais de Estimação -->
+<h2>Animais de Estimação</h2>
+<img src="img/gato.png" alt="Gato">
+<img src="img/cachorro.png" alt="Cachorro">
+<img src="img/cavalo.png" alt="Cavalo">
+<img src="img/passaro.png" alt="Pássaro">
+<img src="img/peixe.png" alt="Peixe">
+
+<!-- Cores das Casas -->
+<h2>Cores das Casas</h2>
+<img src="img/vermelha.png" alt="Vermelha">
+<img src="img/verde.png" alt="Verde">
+<img src="img/branca.png" alt="Branca">
+<img src="img/amarela.png" alt="Amarela">
+<img src="img/azul.png" alt="Azul">
+<h2>Nacionalidades</h2>
+<div class="category">
+  <img src="img/ingles.png" alt="Inglês">
+  <img src="img/sueco.png" alt="Sueco">
+  <img src="img/dinamarques.png" alt="Dinamarquês">
+  <img src="img/noruegues.png" alt="Norueguês">
+  <img src="img/alemao.png" alt="Alemão">
+</div>
+
+<h2>Bebidas</h2>
+<div class="category">
+  <img src="img/cha.png" alt="Chá">
+  <img src="img/cafe.png" alt="Café">
+  <img src="img/leite.png" alt="Leite">
+  <img src="img/cerveja.png" alt="Cerveja">
+  <img src="img/agua.png" alt="Água">
+</div>
+
+<h2>Cigarros</h2>
+<div class="category">
+  <img src="img/pallmall.png" alt="Pall Mall">
+  <img src="img/dunhill.png" alt="Dunhill">
+  <img src="img/blends.png" alt="Blends">
+  <img src="img/bluemaster.png" alt="BlueMaster">
+  <img src="img/prince.png" alt="Prince">
+</div>
+
+<h2>Animais de Estimação</h2>
+<div class="category">
+  <img src="img/gato.png" alt="Gato">
+  <img src="img/cachorro.png" alt="Cachorro">
+  <img src="img/cavalo.png" alt="Cavalo">
+  <img src="img/passaro.png" alt="Pássaro">
+  <img src="img/peixe.png" alt="Peixe">
+</div>
+
+<h2>Cores das Casas</h2>
+<div class="category">
+  <img src="img/vermelha.png" alt="Vermelha">
+  <img src="img/verde.png" alt="Verde">
+  <img src="img/branca.png" alt="Branca">
+  <img src="img/amarela.png" alt="Amarela">
+  <img src="img/azul.png" alt="Azul">
+</div>
