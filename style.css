@@ -55,3 +55,36 @@ body {
 #conquistasPainel {
   margin-top: 20px;
 }
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f5f5f5;
+  margin: 20px;
+  color: #333;
+}
+
+h2 {
+  margin-top: 40px;
+  color: #006699;
+}
+
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.category img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category img:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+}
