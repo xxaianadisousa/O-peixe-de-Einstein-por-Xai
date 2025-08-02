@@ -38,6 +38,7 @@
     }
     .dicas h2 { margin-top: 0; }
     ol { padding-left: 20px; }
+    .dicas p { margin: 0; cursor: pointer; }
     #resultado { margin-top: 20px; font-weight: bold; white-space: pre-line; }
     button {
       margin-top: 20px;
@@ -56,27 +57,27 @@
     <div class="dicas">
       <h2>Dicas do Enigma</h2>
       <ol>
-        <li><p>O britânico vive na casa vermelha.</p></li>
-        <li><p>O sueco tem um cachorro.</p></li>
-        <li><p>O dinamarquês bebe chá.</p></li>
-        <li><p>A casa verde está à esquerda da casa branca.</p></li>
-        <li><p>O dono da casa verde bebe café.</p></li>
-        <li><p>A pessoa que fuma Pall Mall cria pássaros.</p></li>
-        <li><p>O dono da casa amarela fuma Dunhill.</p></li>
-        <li><p>O homem que vive na casa do meio bebe leite.</p></li>
-        <li><p>O norueguês vive na primeira casa.</p></li>
-        <li><p>O homem que fuma Blends vive ao lado do dono dos gatos.</p></li>
-        <li><p>O dono do cavalo vive ao lado do homem que fuma Dunhill.</p></li>
-        <li><p>O homem que fuma Bluemaster bebe cerveja.</p></li>
-        <li><p>O alemão fuma Prince.</p></li>
-        <li><p>O norueguês vive ao lado da casa azul.</p></li>
-        <li><p>O homem que fuma Blends tem um vizinho que bebe água.</p></li>
+        <li><p onclick="destacarDica(this)">O britânico vive na casa vermelha.</p></li>
+        <li><p onclick="destacarDica(this)">O sueco tem um cachorro.</p></li>
+        <li><p onclick="destacarDica(this)">O dinamarquês bebe chá.</p></li>
+        <li><p onclick="destacarDica(this)">A casa verde está à esquerda da casa branca.</p></li>
+        <li><p onclick="destacarDica(this)">O dono da casa verde bebe café.</p></li>
+        <li><p onclick="destacarDica(this)">A pessoa que fuma Pall Mall cria pássaros.</p></li>
+        <li><p onclick="destacarDica(this)">O dono da casa amarela fuma Dunhill.</p></li>
+        <li><p onclick="destacarDica(this)">O homem que vive na casa do meio bebe leite.</p></li>
+        <li><p onclick="destacarDica(this)">O norueguês vive na primeira casa.</p></li>
+        <li><p onclick="destacarDica(this)">O homem que fuma Blends vive ao lado do dono dos gatos.</p></li>
+        <li><p onclick="destacarDica(this)">O dono do cavalo vive ao lado do homem que fuma Dunhill.</p></li>
+        <li><p onclick="destacarDica(this)">O homem que fuma Bluemaster bebe cerveja.</p></li>
+        <li><p onclick="destacarDica(this)">O alemão fuma Prince.</p></li>
+        <li><p onclick="destacarDica(this)">O norueguês vive ao lado da casa azul.</p></li>
+        <li><p onclick="destacarDica(this)">O homem que fuma Blends tem um vizinho que bebe água.</p></li>
       </ol>
     </div>
   </div>
 
   <button onclick="verificarSolucao()">Verificar QI</button>
-  <button onclick="reiniciarJogo()">🔄 Reiniciar</button>
+  <button onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
   <button onclick="mostrarDicaAleatoria()">💡 Dica Aleatória</button>
   <div id="resultado"></div>
 
@@ -85,7 +86,7 @@
       cor: ["vermelho", "verde", "branco", "azul", "amarelo"],
       nacionalidade: ["noruegues", "ingles", "dinamarques", "alemao", "sueco"],
       bebida: ["agua", "cafe", "leite", "cerveja", "cha"],
-      cigarro: ["pallmall", "dunhill", "bluemaster", "prince", "blend"],
+      cigarro: ["pallmall", "dunhill", "bluemaster", "prince", "blends"],
       animal: ["gato", "cachorro", "pássaro", "cavalo", "peixe"]
     };
 
@@ -161,20 +162,4 @@
     }
 
     function mostrarDicaAleatoria() {
-      const dicas = document.querySelectorAll('.dicas p');
-      const aleatoria = dicas[Math.floor(Math.random() * dicas.length)];
-      alert("💡 Dica aleatória:\n\n" + aleatoria.textContent);
-    }
-
-    const selects = document.querySelectorAll('select');
-
-    function atualizarMenus() {
-      const valoresSelecionados = new Set();
-      selects.forEach(select => {
-        if (select.value) {
-          valoresSelecionados.add(select.value);
-        }
-      });
-
-      selects.forEach(select => {
-        Array.from(select.options).forEach(option => {
+      const dicas
