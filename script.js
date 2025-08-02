@@ -34,3 +34,21 @@ selects.forEach(select => {
 
 // Inicializa o estado correto ao carregar a página
 atualizarMenus();
+}
+const selects = document.querySelectorAll('select');
+
+function atualizarOpcoes() {
+  const valoresSelecionados = Array.from(selects)
+    .map(s => s.value)
+    .filter(v => v);
+
+  selects.forEach(select => {
+    Array.from(select.options).forEach(option => {
+      option.disabled = valoresSelecionados.includes(option.value) && select.value !== option.value;
+    });
+  });
+}
+
+selects.forEach(select => {
+  select.addEventListener('change', atualizarOpcoes);
+});
