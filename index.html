@@ -5,16 +5,42 @@
   <title>O Peixe de Einstein</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
+    .container { display: flex; gap: 40px; }
+    .casas { flex: 2; }
+    .dicas { flex: 1; background: #f9f9f9; padding: 10px; border-left: 2px solid #ccc; }
     .casa { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
     .casa h3 { margin-top: 0; }
-    select { margin: 5px; width: 180px; }
+    select { margin: 5px; width: 160px; }
+    h1 { margin-bottom: 10px; }
   </style>
 </head>
 <body>
   <h1>O Peixe de Einstein 🧠🐟</h1>
 
-  <!-- Casas 1 a 5 -->
-  <div id="casas"></div>
+  <div class="container">
+    <div class="casas" id="casas"></div>
+
+    <div class="dicas">
+      <h2>Dicas do Enigma</h2>
+      <ol>
+        <li>O britânico vive na casa vermelha.</li>
+        <li>O sueco tem um cachorro.</li>
+        <li>O dinamarquês bebe chá.</li>
+        <li>A casa verde está à esquerda da casa branca.</li>
+        <li>O dono da casa verde bebe café.</li>
+        <li>A pessoa que fuma Pall Mall cria pássaros.</li>
+        <li>O dono da casa amarela fuma Dunhill.</li>
+        <li>O homem que vive na casa do meio bebe leite.</li>
+        <li>O norueguês vive na primeira casa.</li>
+        <li>O homem que fuma Blends vive ao lado do dono dos gatos.</li>
+        <li>O dono do cavalo vive ao lado do homem que fuma Dunhill.</li>
+        <li>O homem que fuma Bluemaster bebe cerveja.</li>
+        <li>O alemão fuma Prince.</li>
+        <li>O norueguês vive ao lado da casa azul.</li>
+        <li>O homem que fuma Blends tem um vizinho que bebe água.</li>
+      </ol>
+    </div>
+  </div>
 
   <script>
     const opcoes = {
