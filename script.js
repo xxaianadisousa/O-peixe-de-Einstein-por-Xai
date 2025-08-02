@@ -1,30 +1,15 @@
-const selects = document.querySelectorAll('select');
+function destacarDica(el) {
+  el.style.backgroundColor = "#d0f0ff";
+}
 
-function atualizarMenus() {
-  const valoresSelecionados = new Set();
-
-  selects.forEach(select => {
-    if (select.value) {
-      valoresSelecionados.add(select.value);
-    }
-  });
-
-  selects.forEach(select => {
-    Array.from(select.options).forEach(option => {
-      option.disabled = false;
-      if (
-        valoresSelecionados.has(option.value) &&
-        select.value !== option.value
-      ) {
-        option.disabled = true;
-      }
-    });
+function reiniciarJogo() {
+  document.querySelectorAll('.casa select').forEach(select => {
+    select.selectedIndex = 0;
   });
 }
 
-selects.forEach(select => {
-  select.addEventListener('change', atualizarMenus);
-});
-
-// Inicializa ao carregar
-atualizarMenus();
+function mostrarDicaAleatoria() {
+  const dicas = document.querySelectorAll('.dicas p');
+  const aleatoria = dicas[Math.floor(Math.random() * dicas.length)];
+  alert("💡 Dica aleatória:\n\n" + aleatoria.textContent);
+}
