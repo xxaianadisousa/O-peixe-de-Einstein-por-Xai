@@ -30,5 +30,5 @@ selects.forEach(select => {
   select.addEventListener('change', atualizarMenus);
 });
 
-// Inicializa quando a página carrega
+// Inicializa ao carregar
 atualizarMenus();
