@@ -1,52 +1,30 @@
+function verificarResposta() {
+  const respostasUsuario = []; // Aqui você coleta os dados preenchidos
 
-function destacarDica(el) {
-  el.style.backgroundColor = "#d0f0ff";
-}
-
-function reiniciarJogo() {
-  document.querySelectorAll('.casa select').forEach(select => {
-    select.selectedIndex = 0;
-  });
-}
-
-function mostrarDicaAleatoria() {
-  const dicas = document.querySelectorAll('.dicas p');
-  const aleatoria = dicas[Math.floor(Math.random() * dicas.length)];
-  alert("💡 Dica aleatória:\n\n" + aleatoria.textContent);
-}
-const selects = document.querySelectorAll('select');
-
-function atualizarMenus() {
-  const valoresSelecionados = new Set();
-
-  // Coleta todos os valores escolhidos nos menus
-  selects.forEach(select => {
-    if (select.value) {
-      valoresSelecionados.add(select.value);
-    }
-  });
-
-  // Atualiza os menus conforme os valores escolhidos
-  selects.forEach(select => {
-    Array.from(select.options).forEach(option => {
-      // Habilita tudo antes de reprocessar
-      option.disabled = false;
-
-      // Desabilita se já foi escolhido em outro menu
-      if (
-        valoresSelecionados.has(option.value) &&
-        select.value !== option.value
-      ) {
-        option.disabled = true;
-      }
+  document.querySelectorAll('.casa').forEach(casa => {
+    const dados = {};
+    casa.querySelectorAll('select').forEach(select => {
+      const tipo = select.className; // Supondo que cada <select> tem uma class indicando o tipo (ex: "cor", "nacionalidade")
+      dados[tipo] = select.value;
     });
+    respostasUsuario.push(dados);
   });
+
+  for (let i = 0; i < 5; i++) {
+    const casaUsuario = respostasUsuario[i];
+    const casaCorreta = solucao[i]; // Certifique-se que sua variável `solucao` está definida acima no script
+
+    for (let tipo in casaCorreta) {
+      const valorUsuario = casaUsuario[tipo]?.toLowerCase().trim();
+      const valorCorreto = casaCorreta[tipo]?.toLowerCase().trim();
+
+      if (valorUsuario !== valorCorreto) {
+        marcarErro(i, tipo); // Mostra onde está o erro
+        return false;
+      }
+    }
+  }
+
+  alert("✅ Parabéns! Você solucionou corretamente o enigma de Einstein!");
+  return true;
 }
-
-// Aplica o comportamento em todos os menus
-selects.forEach(select => {
-  select.addEventListener('change', atualizarMenus);
-});
-
-// Inicializa o estado correto ao carregar a página
-atualizarMenus();
