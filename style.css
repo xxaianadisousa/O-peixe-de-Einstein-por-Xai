@@ -1,55 +1,27 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f0f0f5;
-  margin: 0;
+  font-family: sans-serif;
+  background-color: #f0f0f0;
   padding: 20px;
-  text-align: center;
 }
-
-h1 {
-  color: #444;
-  margin-bottom: 10px;
-}
-
-.instrucao {
-  color: #666;
-  font-size: 1rem;
-  margin-bottom: 30px;
-}
-
-#game {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+#casas-container {
+  display: flex;
   gap: 20px;
-  padding: 10px;
-  max-width: 1000px;
-  margin: auto;
+  justify-content: center;
 }
-
 .casa {
-  background: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 180px;
 }
-
-.casa h2 {
-  margin-top: 0;
-  color: #2c3e50;
-}
-
-label {
-  font-weight: bold;
-  display: block;
-  margin: 8px 0 4px;
-  color: #333;
-}
-
 select {
-  width: 90%;
-  padding: 6px;
-  font-size: 1rem;
-  margin-bottom: 10px;
-  border-radius: 6px;
+  display: block;
+  margin: 5px 0;
+  width: 100%;
+}
+#dicas {
+  margin-top: 30px;
+  background: #fff;
+  padding: 15px;
   border: 1px solid #ccc;
 }
