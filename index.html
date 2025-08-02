@@ -56,26 +56,28 @@
     <div class="dicas">
       <h2>Dicas do Enigma</h2>
       <ol>
-        <li>O britânico vive na casa vermelha.</li>
-        <li>O sueco tem um cachorro.</li>
-        <li>O dinamarquês bebe chá.</li>
-        <li>A casa verde está à esquerda da casa branca.</li>
-        <li>O dono da casa verde bebe café.</li>
-        <li>A pessoa que fuma Pall Mall cria pássaros.</li>
-        <li>O dono da casa amarela fuma Dunhill.</li>
-        <li>O homem que vive na casa do meio bebe leite.</li>
-        <li>O norueguês vive na primeira casa.</li>
-        <li>O homem que fuma Blends vive ao lado do dono dos gatos.</li>
-        <li>O dono do cavalo vive ao lado do homem que fuma Dunhill.</li>
-        <li>O homem que fuma Bluemaster bebe cerveja.</li>
-        <li>O alemão fuma Prince.</li>
-        <li>O norueguês vive ao lado da casa azul.</li>
-        <li>O homem que fuma Blends tem um vizinho que bebe água.</li>
+        <li><p>O britânico vive na casa vermelha.</p></li>
+        <li><p>O sueco tem um cachorro.</p></li>
+        <li><p>O dinamarquês bebe chá.</p></li>
+        <li><p>A casa verde está à esquerda da casa branca.</p></li>
+        <li><p>O dono da casa verde bebe café.</p></li>
+        <li><p>A pessoa que fuma Pall Mall cria pássaros.</p></li>
+        <li><p>O dono da casa amarela fuma Dunhill.</p></li>
+        <li><p>O homem que vive na casa do meio bebe leite.</p></li>
+        <li><p>O norueguês vive na primeira casa.</p></li>
+        <li><p>O homem que fuma Blends vive ao lado do dono dos gatos.</p></li>
+        <li><p>O dono do cavalo vive ao lado do homem que fuma Dunhill.</p></li>
+        <li><p>O homem que fuma Bluemaster bebe cerveja.</p></li>
+        <li><p>O alemão fuma Prince.</p></li>
+        <li><p>O norueguês vive ao lado da casa azul.</p></li>
+        <li><p>O homem que fuma Blends tem um vizinho que bebe água.</p></li>
       </ol>
     </div>
   </div>
 
   <button onclick="verificarSolucao()">Verificar QI</button>
+  <button onclick="reiniciarJogo()">🔄 Reiniciar</button>
+  <button onclick="mostrarDicaAleatoria()">💡 Dica Aleatória</button>
   <div id="resultado"></div>
 
   <script>
@@ -108,28 +110,6 @@
         ).join("");
       container.appendChild(div);
     }
-
-    function atualizarOpcoes(tipo) {
-      const selects = Array.from(document.querySelectorAll(`select[name="${tipo}"]`));
-      const valoresSelecionados = selects.map(s => s.value);
-
-      selects.forEach((selectAtual, indexAtual) => {
-        const valoresAnteriores = valoresSelecionados.slice(0, indexAtual).filter(v => v !== "");
-        Array.from(selectAtual.options).forEach(option => {
-          if (valoresAnteriores.includes(option.value) && option.value !== selectAtual.value) {
-            option.disabled = true;
-          } else {
-            option.disabled = false;
-          }
-        });
-      });
-    }
-
-    ["cor", "nacionalidade", "bebida", "cigarro", "animal"].forEach(tipo => {
-      document.querySelectorAll(`select[name="${tipo}"]`).forEach(select => {
-        select.addEventListener("change", () => atualizarOpcoes(tipo));
-      });
-    });
 
     function verificarSolucao() {
       let acertos = 0;
@@ -168,6 +148,33 @@
       document.getElementById("resultado").innerText =
         `✅ Casas corretas: ${acertos}/5\n🎯 Pontuação: ${pontos}\n🧠 QI estimado: ${qi} (${nivel})`;
     }
-  </script>
-</body>
-</html>
+
+    function destacarDica(el) {
+      el.style.backgroundColor = "#d0f0ff";
+    }
+
+    function reiniciarJogo() {
+      document.querySelectorAll('.casa select').forEach(select => {
+        select.selectedIndex = 0;
+      });
+      atualizarMenus();
+    }
+
+    function mostrarDicaAleatoria() {
+      const dicas = document.querySelectorAll('.dicas p');
+      const aleatoria = dicas[Math.floor(Math.random() * dicas.length)];
+      alert("💡 Dica aleatória:\n\n" + aleatoria.textContent);
+    }
+
+    const selects = document.querySelectorAll('select');
+
+    function atualizarMenus() {
+      const valoresSelecionados = new Set();
+      selects.forEach(select => {
+        if (select.value) {
+          valoresSelecionados.add(select.value);
+        }
+      });
+
+      selects.forEach(select => {
+        Array.from(select.options).forEach(option => {
