@@ -179,6 +179,15 @@
 </div>
 
 <script>
+  <button onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
+
+<script>
+  function reiniciarJogo() {
+    // Exemplo: limpa os campos e recarrega a página
+    // Isso pode ser adaptado ao seu jogo específico!
+    location.reload(); // Recarrega a página
+  }
+</script>
   function salvarComentario() {
     const texto = document.getElementById("comentario").value.trim();
     const nome = document.getElementById("nome").value.trim();
@@ -200,12 +209,4 @@
     document.getElementById("cidade").value = "";
   }
 </script>
-<button onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
 
-<script>
-  function reiniciarJogo() {
-    // Exemplo: limpa os campos e recarrega a página
-    // Isso pode ser adaptado ao seu jogo específico!
-    location.reload(); // Recarrega a página
-  }
-</script>
