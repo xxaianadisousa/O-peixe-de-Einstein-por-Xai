@@ -1,32 +1,34 @@
-function destacarDica(el) {
-  el.style.backgroundColor = "#d0f0ff";
-}
-
-function reiniciarJogo() {
-  document.querySelectorAll('.casa select').forEach(select => {
-    select.selectedIndex = 0;
-  });
-}
-
-function mostrarDicaAleatoria() {
-  const dicas = document.querySelectorAll('.dicas p');
-  const aleatoria = dicas[Math.floor(Math.random() * dicas.length)];
-  alert("💡 Dica aleatória:\n\n" + aleatoria.textContent);
-}
 const selects = document.querySelectorAll('select');
 
-function atualizarOpcoes() {
-  const valoresSelecionados = Array.from(selects)
-    .map(s => s.value)
-    .filter(v => v);
+function atualizarMenus() {
+  const valoresSelecionados = new Set();
 
+  // Recolhe todas as escolhas ativas
+  selects.forEach(select => {
+    if (select.value) {
+      valoresSelecionados.add(select.value);
+    }
+  });
+
+  // Atualiza cada menu com base nas escolhas globais
   selects.forEach(select => {
     Array.from(select.options).forEach(option => {
-      option.disabled = valoresSelecionados.includes(option.value) && select.value !== option.value;
+      option.disabled = false;
+      if (
+        valoresSelecionados.has(option.value) &&
+        select.value !== option.value &&
+        option.value !== ''
+      ) {
+        option.disabled = true;
+      }
     });
   });
 }
 
+// Escuta mudanças e aplica a lógica
 selects.forEach(select => {
-  select.addEventListener('change', atualizarOpcoes);
+  select.addEventListener('change', atualizarMenus);
 });
+
+// Inicializa quando a página carrega
+atualizarMenus();
